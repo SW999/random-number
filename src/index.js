@@ -2,16 +2,28 @@ import React from "react";
 import ReactDOM from "react-dom";
 import './scss/app.scss';
 
-import Header from './components/Header';
 import Footer from './components/Footer';
 
-class HelloMessage extends React.Component {
+class App extends React.Component {
   render() {
     return [
       <div key='main'>
-      <Header/>
       <div className="container">
-        <h1>Hello {this.props.name}</h1>
+        <h1>{this.props.name}</h1>
+        <div className="digit-wrapper">
+          <ul className="digit">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>0</li>
+          </ul>
+        </div>
       </div>
     </div>,
     <Footer key='footer'/>
@@ -19,6 +31,4 @@ class HelloMessage extends React.Component {
   }
 }
 
-let App = document.getElementById("app");
-
-ReactDOM.render(<HelloMessage name="Yomi"/>, App);
+ReactDOM.render(<App name="Random integer number generator in a given range" />, document.getElementById('app'));

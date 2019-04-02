@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron:400,700');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
 html {
   height: 100%;
   font-size: 10px;
@@ -14,17 +16,38 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: lightgreen;
+  background-color: $lightgreen;
+}
+
+h1 {
+  margin: 4rem 0;
+  text-shadow: 1px 1px 1px $white;
+  font: 5rem 'Righteous', cursive;
+  text-align: center;
+}
+
+.digit {
+  font: 8rem/1 'Orbitron', sans-serif;
+  text-shadow: 1px 1px 1px $white;
+
+  &-wrapper {
+    width: 8rem;
+    height: 8rem;
+    margin: 1rem auto;
+    border: thin solid rgba(51, 51, 51, .6);
+    overflow: hidden;
+    text-align: center;
+  }
 }
 
 .page-footer {
   margin-top: auto;
   padding: 2rem;
-  color: #fff;
+  color: $white;
   font-family: 'freight-text-pro', Georgia, Cambria, 'Times New Roman', Times, serif;
-  background-color: rgba(51, 51, 51, .7);
+  background-color: rgba(51, 51, 51, .6);
 
   a {
-    color: white;
+    color: $white;
   }
 }
