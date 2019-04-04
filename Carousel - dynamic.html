@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Carousel - dynamic</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+        text-align: center;
+      }
+
+      .scene {
+        position: relative;
+        width: 100px;
+        height: 180px;
+        margin: 80px auto;
+        border: 1px solid #CCC;
+        border-radius: 15px;
+        overflow: hidden;
+        perspective: 1000px;
+        background-image: -webkit-linear-gradient(top, #111111 0%, #111111 35%, #333333 55%, #111111 55%, #111111 100%);
+      }
+
+      .carousel {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform: translateZ(-288px);
+        transform-style: preserve-3d;
+        transition: transform .4s;
+      }
+
+      .carousel__cell {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        line-height: 1.8;
+        font-size: 100px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        backface-visibility: hidden;
+      }
+
+      .carousel__cell:nth-child(1) {
+        transform: rotateX(0deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(2) {
+        transform: rotateX(36deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(3) {
+        transform: rotateX(72deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(4) {
+        transform: rotateX(108deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(5) {
+        transform: rotateX(144deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(6) {
+        transform: rotateX(180deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(7) {
+        transform: rotateX(216deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(8) {
+        transform: rotateX(252deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(9) {
+        transform: rotateX(288deg) translateZ(274px);
+      }
+
+      .carousel__cell:nth-child(10) {
+        transform: rotateX(324deg) translateZ(274px);
+      }
+
+      .carousel-options {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+<div class="scene">
+  <div class="carousel">
+    <div class="carousel__cell">0</div>
+    <div class="carousel__cell">1</div>
+    <div class="carousel__cell">2</div>
+    <div class="carousel__cell">3</div>
+    <div class="carousel__cell">4</div>
+    <div class="carousel__cell">5</div>
+    <div class="carousel__cell">6</div>
+    <div class="carousel__cell">7</div>
+    <div class="carousel__cell">8</div>
+    <div class="carousel__cell">9</div>
+  </div>
+</div>
+
+<div class="carousel-options">
+  <p>
+    <button class="previous-button">Previous</button>
+    <button class="next-button">Next</button>
+  </p>
+</div>
+<script>
+  var carousel = document.querySelector('.carousel');
+  var cellCount = 10;
+  var selectedIndex = 0;
+  var cellHeight = carousel.offsetHeight;
+  var theta = 36;
+  var radius = Math.round((cellHeight / 2) / Math.tan(Math.PI / cellCount));
+
+  function rotateCarousel() {
+    var angle = theta * selectedIndex * -1;
+    carousel.style.transform = 'translateZ(' + -radius + 'px) ' + 'rotateX(' + angle + 'deg)';
+  }
+
+  var prevButton = document.querySelector('.previous-button');
+  prevButton.addEventListener('click', function () {
+    selectedIndex--;
+    rotateCarousel();
+  });
+
+  var nextButton = document.querySelector('.next-button');
+  nextButton.addEventListener('click', function () {
+    selectedIndex++;
+    rotateCarousel();
+  });
+</script>
+  </body>
+</html>
