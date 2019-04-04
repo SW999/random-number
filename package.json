@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --no-cache --out-dir build"
+    "clean": "del-cli dist/*",
+    "start": "npm run clean && parcel index.html",
+    "build": "npm run clean && parcel build index.html --public-url ./ --no-cache --no-source-maps"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,8 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "cssnano": "^4.1.10",
+    "del-cli": "^1.1.0"
   }
 }
