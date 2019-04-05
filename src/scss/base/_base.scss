@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron:400,700');
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 html {
   height: 100%;
@@ -24,20 +23,6 @@ h1 {
   text-shadow: 1px 1px 1px $white;
   font: 5rem 'Righteous', cursive;
   text-align: center;
-}
-
-.digit {
-  font: 8rem/1 'Orbitron', sans-serif;
-  text-shadow: 1px 1px 1px $white;
-
-  &-wrapper {
-    width: 8rem;
-    height: 8rem;
-    margin: 1rem auto;
-    border: thin solid rgba(51, 51, 51, .6);
-    overflow: hidden;
-    text-align: center;
-  }
 }
 
 .page-footer {
