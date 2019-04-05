@@ -95,6 +95,77 @@
         position: relative;
         z-index: 2;
       }
+
+.inputs-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 1.5em 0 1.5em 0;
+  padding: 0;
+}
+
+.grid > .grid__cell {
+  padding: 1.5em 0 0;
+}
+
+@media (min-width: 576px) {
+  .grid > .grid__cell {
+    flex: 1;
+  }
+}
+.grid__cell:nth-child(2) > .num-input__wrapper {
+  margin-left: 23px;
+}
+.num-input__wrapper {
+  display: flex;
+  margin-bottom: 1.5em;
+}
+
+.num-input:first-child, .num-input__label:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.num-input, .num-input__label {
+  border: 1px solid #777;
+  padding: .5em .75em;
+}
+.num-input__label {
+  width: 116px;
+  color: white;
+  background: linear-gradient(#090909 0%, #111111 35%, #444444 55%, #111111 55%, #000000 100%);
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.num-input:last-child, .num-input__label:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.num-input:not(:first-child) {
+  border-left: 0;
+}
+.num-input, .num-input__label {
+  border: 1px solid rgba(147,128,108,.25);
+  padding: .5em .75em;
+}
+.num-input {
+  flex: 1;
+  max-width: 200px;
+  color: white;
+  text-align: right;
+  background-color: #444;
+}
+button, input {
+  overflow: hidden;
+  font-family: inherit;
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 0;
+}
     </style>
   </head>
   <body>
@@ -119,6 +190,24 @@
     <button class="next-button">Next</button>
   </p>
 </div>
+<br>
+<div class="inputs-container">
+  <div class="grid">
+    <div class="grid__cell">
+      <div class="num-input__wrapper">
+        <label class="num-input__label" for="minValue">From</label>
+        <input id="minValue" class="num-input" type="number" placeholder="Min value" min="0" step="1" oninput="validity.valid||(value='')" required>
+      </div>
+    </div>
+    <div class="grid__cell">
+      <div class="num-input__wrapper">
+        <label class="num-input__label" for="maxValue">To</label>
+        <input id="maxValue" class="num-input" type="number" placeholder="Max value" min="1" step="1" oninput="validity.valid||(value='')" required>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   var carousel = document.querySelector('.carousel');
   var cellCount = 10;
