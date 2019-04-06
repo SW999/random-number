@@ -2,7 +2,8 @@
   position: relative;
   width: 10rem;
   height: 18rem;
-  margin: 8rem auto;
+  margin-top: 7rem;
+  margin-bottom: 7rem;
   border: 1px solid $gray;
   border-radius: 16px;
   overflow: hidden;
@@ -10,6 +11,10 @@
   text-align: center;
   perspective: 1000px;
   background: linear-gradient($black-lighten 0%, $gray-darken 35%, $gray-dark 55%, $gray-darken 55%, $black 100%);
+
+  &:not(:nth-child(1)) {
+    margin-left: .3rem;
+  }
 }
 
 .slot {

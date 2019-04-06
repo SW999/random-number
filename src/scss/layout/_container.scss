@@ -1,6 +1,11 @@
 .container {
   max-width: 68rem;
   margin: 0 auto;
+
+  &-flex {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .grid {
