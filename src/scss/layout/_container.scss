@@ -1,0 +1,22 @@
+.container {
+  max-width: 68rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 2.5rem 0 2.5rem 0;
+  padding: 0;
+
+  &__cell {
+    @media (min-width: 576px) {
+      flex: 1;
+    }
+
+    &:nth-child(2) .form-group {
+      margin-left: 2.3rem;
+    }
+  }
+}
