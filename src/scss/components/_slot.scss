@@ -1,15 +1,15 @@
 .slot-wrapper {
   position: relative;
-  width: 100px;
-  height: 180px;
-  margin: 80px auto;
-  border: 1px solid #777;
+  width: 10rem;
+  height: 18rem;
+  margin: 8rem auto;
+  border: 1px solid $gray;
   border-radius: 16px;
   overflow: hidden;
   font-family: sans-serif;
   text-align: center;
   perspective: 1000px;
-  background: linear-gradient(#090909 0%, #111111 35%, #444444 55%, #111111 55%, #000000 100%);
+  background: linear-gradient($black-lighten 0%, $gray-darken 35%, $gray-dark 55%, $gray-darken 55%, $black 100%);
 }
 
 .slot {
@@ -27,9 +27,9 @@
     left: 0;
     top: 0;
     line-height: 1.8;
-    font-size: 100px;
+    font-size: 10rem;
     font-weight: bold;
-    color: white;
+    color: $white;
     text-align: center;
     backface-visibility: hidden;
 

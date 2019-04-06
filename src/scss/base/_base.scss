@@ -30,7 +30,7 @@ h1 {
   padding: 2rem;
   color: $white;
   font-family: 'freight-text-pro', Georgia, Cambria, 'Times New Roman', Times, serif;
-  background-color: rgba(51, 51, 51, .6);
+  background-color: rgba($gray-dark, .65);
 
   a {
     color: $white;

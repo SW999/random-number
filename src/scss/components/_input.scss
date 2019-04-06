@@ -7,31 +7,25 @@
   &-input,
   &-label {
     padding: .5em .75em;
-    border: 1px solid #777;
+    border: 1px solid $gray;
     overflow: hidden;
-    color: white;
-    font-size: 30px;
+    color: $white;
+    font-size: 3rem;
   }
   &-input {
     flex: 1;
-    max-width: 200px;
+    max-width: 20rem;
+    border-left: 0;
     border-radius: 0 8px 8px 0;
     text-align: right;
-    background-color: #444;
+    background-color: $gray-dark;
   }
   &-label {
-    width: 116px;
+    width: 11.6rem;
+    border-right: 0;
     border-radius: 8px 0 0 8px;
     font-weight: 400;
     text-align: center;
-    background: linear-gradient(#090909 0%, #111 35%, #444 55%, #111 55%, #000 100%);
+    background: linear-gradient($black-lighten 0%, $gray-darken 35%, $gray-dark 55%, $gray-darken 55%, $black 100%);
   }
 }
-
-/*.form-input:last-child, .form-label:last-child {
-
-}
-
-.form-input:not(:first-child) {
-  border-left: 0;
-}*/
