@@ -1,21 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './scss/app.scss';
-
 import Footer from './components/Footer';
-import FormContainer from "./containers/FormContainer";
-import SlotsContainer from "./containers/SlotsContainer";
+import MainContainer from "./containers/MainContainer";
+import './scss/app.scss';
 
 class App extends React.Component {
   render() {
     return [
-      <div key='main'>
-        <div className="container">
-          <h1 title={this.props.title}>{this.props.name}</h1>
-          <SlotsContainer amount={6}/>
-          <FormContainer/>
-        </div>
-      </div>,
+      <MainContainer
+        key='main'
+        title={this.props.title}
+        name={this.props.name}
+      />,
       <Footer key='footer'/>
     ]
   }

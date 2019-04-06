@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import Input from '../components/Input';
 
-const FormContainer = ({ props }) => {
+const FormContainer = ({ onSetMaxValue }) => {
   const [minValue, setMinValue] = useState(0);
 
-  const [isReady, setReadiness] = useState({
+  const [ready, setReadiness] = useState({
     min: '',
     max: ''
   });
 
   const handleMinChange = value => {
     const val = Number(value);
-    const max = isReady.max > val ? isReady.max : '';
+    const max = ready.max > val ? ready.max : '';
     setMinValue(val + 1);
     setReadiness({ min: val, max: max });
   };
 
-  const handleMaxChange = value => setReadiness({ ...isReady, max: value });
+  const handleMaxChange = value => setReadiness({ ...ready, max: value });
 
-  const checkReadiness = _ => isReady.min !== '' && isReady.max !== '';
+  const checkReadiness = _ => {
+    onSetMaxValue(ready.max);
+
+    return ready.min !== '' && ready.max !== '';
+  };
 
   return (
     <React.Fragment>
