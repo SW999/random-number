@@ -24,3 +24,7 @@ export const getRandomInt = (min, max) => {
   }
   return min + (byteArray[0] % range);
 };
+
+export const debounceEvent = (callback, time = 250, interval) =>
+  (...args) =>
+    clearTimeout(interval, interval = setTimeout(callback, time, ...args));

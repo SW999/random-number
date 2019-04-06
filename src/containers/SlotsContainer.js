@@ -1,6 +1,6 @@
 import React from 'react';
 import Slot from '../components/Slot';
-import { getRandomInt } from '../services/getRandomIntagerInRange';
+import { getRandomInt } from '../services/utils';
 
 const SlotsContainer = ({ amount = 1 }) => {
   const getSlots = () => {
