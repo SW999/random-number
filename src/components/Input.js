@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { debounceEvent } from '../services/utils';
 
 const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, max = '', step = 1, handleChange = _ => {} }) => {
-  let refInput = React.createRef();
+  const refInput = React.createRef();
 
   const onChange = e => {
     const { value, validity } = e.target;

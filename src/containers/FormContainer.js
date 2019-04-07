@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../components/Input';
 
-const FormContainer = ({ onSetMaxValue }) => {
+const FormContainer = ({ onSetMaxValue, onGenerate }) => {
   const [minValue, setMinValue] = useState(0);
 
   const [ready, setReadiness] = useState({
@@ -24,6 +24,11 @@ const FormContainer = ({ onSetMaxValue }) => {
     return ready.min !== '' && ready.max !== '';
   };
 
+  const hendleGenerate = e => { // TODO: disable btn while the Slots are spinning
+    e.preventDefault();
+    onGenerate(ready);
+  };
+
   return (
     <React.Fragment>
       <div className="container container-flex">
@@ -42,7 +47,7 @@ const FormContainer = ({ onSetMaxValue }) => {
       </div>
       {checkReadiness() &&
       <div className="container container-flex">
-        <button>Generate !</button>
+        <button onClick={hendleGenerate}>Generate !</button>
       </div>
       }
     </React.Fragment>
