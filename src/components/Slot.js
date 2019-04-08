@@ -19,7 +19,7 @@ const Slot = ({ delay, num = null }) => {
 
   useEffect(() => {
     if (num !== null && ref.current) {
-      const maxCount = 20 + Number(num);
+      const maxCount = 10 + Number(num);
       let interval = setInterval(() => {
         selectedIndex++;
         rotateSlot();
@@ -36,7 +36,7 @@ const Slot = ({ delay, num = null }) => {
       const angle = -36 * selectedIndex;
       ref.current.style.transform = `translateZ(-${radius}px) rotateX(${angle}deg)`;
     }
-  }
+  };
 
   return (
     <div className="slot-wrapper">
