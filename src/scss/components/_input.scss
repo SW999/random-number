@@ -49,6 +49,7 @@ button {
   cursor: pointer;
   background: linear-gradient($gray 0%, $gray-dark, 40%, $black-lighten 100%);
   transition: background .6s ease-in;
+  animation: pulse .9s 2;
 
   &:active {
     background: linear-gradient($black-lighten 0%, $gray-dark, 40%, $gray 100%);
