@@ -15,7 +15,7 @@ const Slot = ({ delay, num = null }) => {
       ref.current.style.transition = `transform .${delay}s`;
       speed = delay * 100 + 30;
     }
-  }, [delay, num]);
+  }, [delay]);
 
   useEffect(() => {
     if (num !== null && ref.current) {
@@ -28,6 +28,9 @@ const Slot = ({ delay, num = null }) => {
           clearInterval(interval);
         }
       }, speed);
+    } else {
+      selectedIndex = 0;
+      rotateSlot();
     }
   }, [delay, num]);
 

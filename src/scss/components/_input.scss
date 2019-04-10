@@ -1,16 +1,27 @@
 .form {
   &-group {
     display: flex;
+    flex-wrap: wrap;
+    max-width: calc(50% - 2.3rem);
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
 
     &:not(:nth-child(1)) {
       margin-left: 2.3rem;
     }
+
+    .validation-text {
+      flex: 0 1 100%;
+      max-width: 30rem;
+      color: $white;
+      font-size: 2rem;
+      text-shadow: 1px 1px 1px $gray-darken;
+    }
   }
 
   &-input,
   &-label {
+    height: 8rem;
     padding: .5em .75em;
     border: 1px solid $gray;
     overflow: hidden;

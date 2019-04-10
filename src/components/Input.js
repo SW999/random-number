@@ -1,28 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { debounceEvent } from '../services/utils';
 
-const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, max = '', step = 1, handleChange = _ => {} }) => {
+const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, step = 1, clear = false, handleChange = _ => {}, disabled = false }) => {
   const refInput = React.createRef();
 
+  const [validationText, setValidationText] = useState('');
+
   const onChange = e => {
-    const { value, validity } = e.target;
-    debounceValidation({ value, validity });
+    const { value } = e.target;
+    debounceValidation({ value });
   };
 
-  const debounceValidation = debounceEvent(({ value, validity }) => {
-    if (validity.valid) {
-      handleChange(value);
+  const debounceValidation = debounceEvent(({ value }) => {
+    let timeout;
+
+    if (refInput && value !== '' && !isNaN(Number(value)) && value >= min) {
+      refInput.current.value = Number(value);
+      clearTimeout(timeout);
+      setValidationText('');
+      handleChange(Number(value));
     } else {
       refInput.current.value = '';
+      setValidationText('May by positive integer number');
       handleChange('');
+      timeout = setTimeout(_ => setValidationText(''), 4000);
     }
   }, 1000);
 
   useEffect(() => {
-    if (refInput.current.value !== '' && min > refInput.current.value) {
+    if (clear || (refInput.current.value !== '' && min > refInput.current.value && !clear)) {
       refInput.current.value = '';
     }
-  }, [min]);
+  }, [min, clear]);
 
   return (
     <div className="form-group">
@@ -32,14 +41,15 @@ const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 
         id={`${name}-${type}-${min}`}
         className="form-input"
         required
+        disabled={disabled}
 
         type={type}
         placeholder={placeholder}
         min={min}
-        max={max}
         step={step}
         onChange={onChange}
       />
+      <span className="validation-text">{ validationText }</span>
     </div>
   )
 };

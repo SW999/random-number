@@ -37,6 +37,6 @@ npm run build
 
 ## To do:
 
-- [ ] Add "Clear" button
+- [x] Add "Clear" button
 - [ ] Add tests
-- [ ] Add validation text
+- [x] Add validation text

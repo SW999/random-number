@@ -21,11 +21,16 @@ const MainContainer = ({ title, name }) => {
     setLimits({ min, max });
   };
 
+  const doClear = _ => {
+    setLimits(null);
+    setAmount(1);
+  };
+
   return (
     <div className="container">
       <h1 title={title}>{name}</h1>
       <SlotsContainer amount={amount} limits={limits}/>
-      <FormContainer onSetMaxValue={valueToAmount} onGenerate={doGenerate}/>
+      <FormContainer onSetMaxValue={valueToAmount} onGenerate={doGenerate} onClear={doClear}/>
     </div>
   )
 };
