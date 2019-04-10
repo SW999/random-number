@@ -1,5 +1,6 @@
 # Random number
-![Experiment: generate a positive integer random number in a given range](../master/src/img/screen.jpg)
+Experiment: generate a positive integer random number in a given range.
+![Generate a positive integer random number in a given range](../master/src/img/screen.jpg)
 
 [View in action](https://sw999.github.io/projects/random/index.html)
 
