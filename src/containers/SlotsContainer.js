@@ -6,7 +6,7 @@ const SlotsContainer = ({ amount = 1, limits = null }) => {
   const [slots, setSlots] = useState(null);
 
   useEffect(() => {
-    setSlots(getSlots());
+    setSlots(_ => getSlots());
   }, [amount, limits]);
 
   const getSlots = () => {
@@ -20,13 +20,13 @@ const SlotsContainer = ({ amount = 1, limits = null }) => {
       if (delta > 0) {
         do {
           delta--;
-          random = '0' + random;
+          random = `0${random}`;
         } while (delta > 0);
       }
     }
 
     for (let i = 0; i < amount; i++) {
-      const key = 'slot' + getRandomInt(9999, 9999999);
+      const key = `slot${getRandomInt(9999, 9999999)}`;
       const delay = getRandomInt(3, 6);
       const num = random > -1 ? random[i] : null;
       _slots = [ ..._slots, <Slot key={key} delay={delay} num={num}/> ];

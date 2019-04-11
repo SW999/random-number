@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const Slot = ({ delay, num = null }) => {
-  const ref = React.createRef();
+  let ref = useRef(null);
 
   let selectedIndex = 0;
   let cellHeight = 0;
@@ -9,22 +9,20 @@ const Slot = ({ delay, num = null }) => {
   let speed = 4;
 
   useEffect(() => {
-    if (ref.current) {
-      cellHeight = ref.current.offsetHeight;
-      radius = Math.round((cellHeight / 2) / Math.tan(Math.PI / 10));
-      ref.current.style.transition = `transform .${delay}s`;
-      speed = delay * 100 + 30;
-    }
+    cellHeight = ref.current.offsetHeight;
+    radius = Math.round((cellHeight / 2) / Math.tan(Math.PI / 10));
+    ref.current.style.transition = `transform .${delay}s`;
+    speed = delay * 100 + 30;
   }, [delay]);
 
   useEffect(() => {
-    if (num !== null && ref.current) {
+    if (num !== null) {
       const maxCount = 10 + Number(num);
       let interval = setInterval(() => {
         selectedIndex++;
         rotateSlot();
 
-        if(selectedIndex >= maxCount) {
+        if (selectedIndex >= maxCount) {
           clearInterval(interval);
         }
       }, speed);
@@ -35,10 +33,8 @@ const Slot = ({ delay, num = null }) => {
   }, [delay, num]);
 
   const rotateSlot = () => {
-    if (ref.current) {
-      const angle = -36 * selectedIndex;
-      ref.current.style.transform = `translateZ(-${radius}px) rotateX(${angle}deg)`;
-    }
+    const angle = -36 * selectedIndex;
+    ref.current.style.transform = `translateZ(-${radius}px) rotateX(${angle}deg)`;
   };
 
   return (

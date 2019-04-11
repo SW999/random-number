@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { debounceEvent } from '../services/utils';
 
 const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, step = 1, clear = false, handleChange = _ => {}, disabled = false }) => {
-  const refInput = React.createRef();
+  let refInput = useRef(null);
 
   const [validationText, setValidationText] = useState('');
 
   const onChange = e => {
     const { value } = e.target;
-    debounceValidation({ value });
+    debounceValidation(value);
   };
 
-  const debounceValidation = debounceEvent(({ value }) => {
+  const debounceValidation = debounceEvent((value) => {
     let timeout;
 
-    if (refInput && value !== '' && !isNaN(Number(value)) && value >= min) {
-      refInput.current.value = Number(value);
+    if (value !== '' && !isNaN(Number(value)) && value >= min) {
+      const val = ~~ Number(value);
+      refInput.current.value = val;
       clearTimeout(timeout);
       setValidationText('');
-      handleChange(Number(value));
+      handleChange(val);
     } else {
       refInput.current.value = '';
       setValidationText('May by positive integer number');
