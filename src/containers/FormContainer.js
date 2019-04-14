@@ -40,7 +40,7 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
     return ready.min !== '' && ready.max !== '' && !isGenerate;
   };
 
-  const handleGenerate = e => { // TODO: disable btn while the Slots are spinning
+  const handleGenerate = e => {
     e.preventDefault();
     onGenerate(ready);
     setIsGenerate(true);

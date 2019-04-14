@@ -38,5 +38,7 @@ npm run build
 ## To do:
 
 - [x] Add "Clear" button
-- [ ] Add tests
 - [x] Add validation text
+- [ ] Add Header component with tooltip
+- [ ] Add tests
+- [ ] Rewrite to TypeScript

@@ -10,25 +10,17 @@ const SlotsContainer = ({ amount = 1, limits = null }) => {
   }, [amount, limits]);
 
   const getSlots = () => {
-    let random = limits === null ? -1 : getRandomInt(limits.min, limits.max);
+    let random = limits === null ? '' : getRandomInt(limits.min, limits.max);
     let _slots = [];
-    let delta = 0;
 
-    if (random > -1) { // TODO: simplify
-      random = random.toString();
-      delta = amount - random.length;
-      if (delta > 0) {
-        do {
-          delta--;
-          random = `0${random}`;
-        } while (delta > 0);
-      }
+    if (random !== '') {
+      random = (random.toString()).padStart(amount, '0');
     }
 
     for (let i = 0; i < amount; i++) {
-      const key = `slot${getRandomInt(9999, 9999999)}`;
+      const key = `slot${getRandomInt(0, 9999999)}`;
       const delay = getRandomInt(3, 6);
-      const num = random > -1 ? random[i] : null;
+      const num = random === '' ? null : random[i];
       _slots = [ ..._slots, <Slot key={key} delay={delay} num={num}/> ];
     }
 
