@@ -15,7 +15,7 @@
       max-width: 30rem;
       color: $white;
       font-size: 2rem;
-      text-shadow: 1px 1px 1px $gray-darken;
+      text-shadow: 1px 1px 1px $grey-darken;
     }
   }
 
@@ -23,7 +23,7 @@
   &-label {
     height: 8rem;
     padding: .5em .75em;
-    border: 1px solid $gray;
+    border: 1px solid $grey;
     overflow: hidden;
     color: $white;
     font-size: 3rem;
@@ -35,7 +35,7 @@
     border-left: 0;
     border-radius: 0 8px 8px 0;
     text-align: right;
-    background-color: $gray-dark;
+    background-color: $grey-dark;
   }
 
   &-label {
@@ -52,17 +52,17 @@ button {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
   padding: 1em 3em;
-  border: 1px solid $gray;
+  border: 1px solid $grey;
   border-radius: 8px;
   overflow: hidden;
   color: $white;
   font-size: 3rem;
   cursor: pointer;
-  background: linear-gradient($gray 0%, $gray-dark, 40%, $black-lighten 100%);
+  background: linear-gradient($grey 0%, $grey-dark, 40%, $black-lighten 100%);
   transition: background .6s ease-in;
   animation: pulse .9s 2;
 
   &:active {
-    background: linear-gradient($black-lighten 0%, $gray-dark, 40%, $gray 100%);
+    background: linear-gradient($black-lighten 0%, $grey-dark, 40%, $grey 100%);
   }
 }

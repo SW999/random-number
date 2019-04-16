@@ -39,6 +39,6 @@ npm run build
 
 - [x] Add "Clear" button
 - [x] Add validation text
-- [ ] Add Header component with tooltip
+- [x] Add Header component with tooltip
 - [ ] Add tests
 - [ ] Rewrite to TypeScript
