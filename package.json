@@ -1,12 +1,19 @@
 {
   "name": "random-number",
+  "jest": {
+    "verbose": false,
+    "setupFilesAfterEnv": [
+      "./src/setupTests.js"
+    ]
+  },
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "clean": "del-cli dist/*",
     "start": "npm run clean && parcel index.html",
-    "build": "npm run clean && parcel build index.html --public-url ./ --no-cache --no-source-maps"
+    "build": "npm run clean && parcel build index.html --public-url ./ --no-cache --no-source-maps",
+    "test": "jest --watch"
   },
   "author": "",
   "license": "ISC",
@@ -17,11 +24,14 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
     "cssnano": "^4.1.10",
-    "del-cli": "^1.1.0"
+    "del-cli": "^1.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jest": "^24.7.1"
   }
 }
