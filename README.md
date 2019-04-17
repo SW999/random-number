@@ -1,5 +1,8 @@
 # Random number
 Experiment: generate a positive integer random number in a given range.
+
+Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto API in browsers.
+
 ![Generate a positive integer random number in a given range](../master/src/img/screen.jpg)
 
 [View in action](https://sw999.github.io/projects/random/index.html)
@@ -33,6 +36,17 @@ Open in a browser http://localhost:1234
 * For build:
 ```sh
 npm run build
+```
+## Tests
+
+```sh
+npm run test
+```
+
+or
+
+```sh
+npx majestic
 ```
 
 ## To do:
