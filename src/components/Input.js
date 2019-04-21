@@ -22,7 +22,7 @@ const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 
       handleChange(val);
     } else {
       refInput.current.value = '';
-      setValidationText('May by positive integer number');
+      setValidationText('Only positive integers are allowed');
       handleChange('');
       timeout = setTimeout(_ => setValidationText(''), 4000);
     }

@@ -17,4 +17,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App name="Random number generator" title="Random integer number generator in a given range"/>, document.getElementById('app'));
+ReactDOM.render(<App name="Random number generator" title="Generator of random positive integers in a given range"/>, document.getElementById('app'));

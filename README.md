@@ -1,9 +1,9 @@
 # Random number
-Experiment: generate a positive integer random number in a given range.
+Experiment: generate a random positive integers in a given range.
 
 Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto API in browsers.
 
-![Generate a positive integer random number in a given range](../master/src/img/screen.jpg)
+![Generate a random positive integers in a given range](../master/src/img/screen.jpg)
 
 [View in action](https://sw999.github.io/projects/random/index.html)
 
