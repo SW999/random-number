@@ -19,9 +19,9 @@ const SlotsContainer = ({ amount = 1, limits = null }) => {
 
     for (let i = 0; i < amount; i++) {
       const key = `slot${getRandomInt(0, 9999999)}`;
-      const delay = getRandomInt(3, 6);
+      const tick = getRandomInt(3, 6);
       const num = random === '' ? null : random[i];
-      _slots = [ ..._slots, <Slot key={key} delay={delay} num={num}/> ];
+      _slots = [ ..._slots, <Slot key={key} tick={tick} num={num}/> ];
     }
 
     return _slots;
