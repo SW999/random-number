@@ -23,6 +23,7 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
     });
     setIsGenerate(false);
     onClear();
+    setTimeout(() => setClear(false), 100);
   };
 
   const handleMinChange = value => {
