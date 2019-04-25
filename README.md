@@ -54,5 +54,5 @@ npx majestic
 - [x] Add "Clear" button
 - [x] Add validation text
 - [x] Add Header component with tooltip
-- [ ] Add tests
+- [x] Add tests
 - [ ] Rewrite to TypeScript

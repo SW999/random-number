@@ -9,13 +9,14 @@ const SlotsContainer = ({ amount = 1, limits = null }) => {
     setSlots(_ => getSlots());
   }, [amount, limits]);
 
-  const getSlots = () => {
+  const getRandom = () => {
     let random = limits === null ? '' : getRandomInt(limits.min, limits.max);
-    let _slots = [];
+    return random === '' ? '' : (random.toString()).padStart(amount, '0');
+  };
 
-    if (random !== '') {
-      random = (random.toString()).padStart(amount, '0');
-    }
+  const getSlots = () => {
+    const random = getRandom();
+    let _slots = [];
 
     for (let i = 0; i < amount; i++) {
       const key = `slot${getRandomInt(0, 9999999)}`;
