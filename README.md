@@ -55,4 +55,5 @@ npx majestic
 - [x] Add validation text
 - [x] Add Header component with tooltip
 - [x] Add tests
+- [ ] Add comments
 - [ ] Rewrite to TypeScript

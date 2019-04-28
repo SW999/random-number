@@ -52,15 +52,21 @@ button {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
   padding: 1em 3em;
-  border: 1px solid $grey;
+  border: thin solid $grey-dark;
   border-radius: 8px;
   overflow: hidden;
-  color: $white;
+  color: lighten($grey, 10%);
   font-size: 3rem;
-  cursor: pointer;
+  cursor: unset;
   background: linear-gradient($grey 0%, $grey-dark, 40%, $black-lighten 100%);
   transition: background .6s ease-in;
-  animation: pulse .9s 2;
+
+  &:not(:disabled) {
+    border-color: $grey;
+    cursor: pointer;
+    color: $white;
+    animation: pulse .9s 2;
+  }
 
   &:active {
     background: linear-gradient($black-lighten 0%, $grey-dark, 40%, $grey 100%);

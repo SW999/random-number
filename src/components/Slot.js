@@ -37,8 +37,10 @@ const Slot = ({ tick = 4, num = null }) => {
   }, [tick, num]);
 
   const rotateSlot = () => {
-    const angle = -36 * selectedIndex;
-    ref.current.style.transform = `translateZ(-${radius}px) rotateX(${angle}deg)`;
+    if (ref.current) {
+      const angle = -36 * selectedIndex;
+      ref.current.style.transform = `translateZ(-${radius}px) rotateX(${angle}deg)`;
+    }
   };
 
   const propsValidation = () => {

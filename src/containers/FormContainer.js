@@ -68,16 +68,14 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
           disabled={isGenerate}
         />
       </div>
-      {checkReadiness() &&
       <div className="container container-flex">
-        <button onClick={handleGenerate}>Generate !</button>
-      </div>
-      }
-      {isGenerate &&
-      <div className="container container-flex">
+        {!isGenerate &&
+        <button onClick={handleGenerate} disabled={!checkReadiness()}>Generate !</button>
+        }
+        {isGenerate &&
         <button onClick={handleClear}>Clear</button>
+        }
       </div>
-      }
     </React.Fragment>
   )
 };
