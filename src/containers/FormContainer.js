@@ -70,7 +70,7 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
       </div>
       <div className="container container-flex">
         {!isGenerate &&
-        <button onClick={handleGenerate} disabled={!checkReadiness()}>Generate !</button>
+        <button onClick={handleGenerate} disabled={!checkReadiness()} title={checkReadiness() ? '' : 'Add limits first'}>Generate !</button>
         }
         {isGenerate &&
         <button onClick={handleClear}>Clear</button>
