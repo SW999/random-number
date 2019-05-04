@@ -31,7 +31,7 @@ npm i
 npm start
 ```
 
-Open in a browser http://localhost:1234
+Tab with URL *http://localhost:1234* will be open in a browser.
 
 * For build:
 ```sh
