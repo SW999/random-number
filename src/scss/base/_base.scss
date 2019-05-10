@@ -25,8 +25,11 @@ h1 {
   text-align: center;
 }
 
+.content {
+  flex: 1;
+}
+
 .page-footer {
-  margin-top: auto;
   padding: 2rem;
   color: $white;
   font-family: 'freight-text-pro', Georgia, Cambria, 'Times New Roman', Times, serif;
