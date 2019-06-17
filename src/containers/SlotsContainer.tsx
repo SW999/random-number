@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import Slot from '../components/Slot';
 import { getRandomInt } from '../services/utils';
 
 const SlotsContainer = ({ amount = 1, limits = null }) => {
-  const [slots, setSlots] = useState(null);
+  const [slots, setSlots] = React.useState(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setSlots(_ => getSlots());
   }, [amount, limits]);
 

@@ -23,6 +23,6 @@ describe('Should render Footer', () => {
 
   it('2. Should render link inside', () => {
     wrapper = mount(<Footer />);
-    expect(wrapper.contains(<a href="https://github.com/SW999/random-number" rel="nofollow">SW999</a>)).toBe(true);
+    expect(wrapper.find('a').exists()).toBe(true);
   });
 });

@@ -1,6 +1,9 @@
 {
   "name": "random-number",
   "jest": {
+    "moduleNameMapper": {
+      "^.+\\.svg$": "<rootDir>/svgTransform.js"
+    },
     "verbose": false,
     "setupFilesAfterEnv": [
       "./src/setupTests.js"
@@ -18,6 +21,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/react": "^16.8.20",
+    "@types/react-dom": "^16.8.4",
     "eslint-plugin-react-hooks": "^1.5.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
@@ -28,10 +33,12 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
     "cssnano": "^4.1.10",
     "del-cli": "^1.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
-    "jest": "^24.7.1"
+    "jest": "^24.7.1",
+    "typescript": "^3.5.2"
   }
 }
