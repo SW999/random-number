@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import FormContainer from './FormContainer';
 import SlotsContainer from './SlotsContainer';
 import Header from '../components/Header';
+interface MainContainerProps {
+  title: string
+  name: string | null
+}
+const MainContainer = ({ title, name }: MainContainerProps) => {
+  const [amount, setAmount] = React.useState(1);
 
-const MainContainer = ({ title, name }) => {
-  const [amount, setAmount] = useState(1);
-
-  const [limits, setLimits] = useState(null);
+  const [limits, setLimits] = React.useState(null);
 
   const valueToAmount = value => {
     let val = (value.toString()).length;

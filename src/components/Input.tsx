@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import * as React from 'react';
 import { debounceEvent } from '../services/utils';
 
 const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, step = 1, clear = false, handleChange = _ => {}, disabled = false }) => {
-  let refInput = useRef(null);
+  let refInput = React.useRef(null);
 
-  const [validationText, setValidationText] = useState('');
+  const [validationText, setValidationText] = React.useState('');
 
   const onChange = e => {
     const { value } = e.target;
@@ -28,7 +28,7 @@ const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 
     }
   }, 1000);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (clear || (refInput.current.value !== '' && min > refInput.current.value && !clear)) {
       refInput.current.value = '';
     }

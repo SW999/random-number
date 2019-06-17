@@ -1,38 +1,48 @@
-import React, { useEffect, useState, useRef } from 'react';
+import * as React from 'react';
 
-const Slot = ({ tick = 4, num = null }) => {
-  let ref = useRef(null);
+interface SlotProps {
+  key: string
+  tick: number
+  num: number | null
+}
+
+const Slot = ({ tick = 4, num = null }: SlotProps) => {
+  let ref = React.useRef<HTMLDivElement | null>(null);
 
   let selectedIndex = 0;
   let cellHeight = 0;
   let radius = 0;
   let speed = 430;
 
-  const [errorMessage, setError] = useState('');
+  const [errorMessage, setError] = React.useState('');
 
-  useEffect(() => {
-    cellHeight = ref.current.offsetHeight;
-    radius = Math.round((cellHeight / 2) / Math.tan(Math.PI / 10));
-    ref.current.style.transition = `transform .${tick}s`;
-    speed = tick * 100 + 30;
+  React.useEffect(() => {
+    if (ref.current) {
+      cellHeight = ref.current.offsetHeight;
+      radius = Math.round((cellHeight / 2) / Math.tan(Math.PI / 10));
+      ref.current.style.transition = `transform .${tick}s`;
+      speed = tick * 100 + 30;
+    }
   }, [tick]);
 
-  useEffect(() => {
-    propsValidation();
+  React.useEffect(() => {
+    if (ref.current) {
+      propsValidation();
 
-    if (num !== null) {
-      const maxCount = 10 + Number(num);
-      let interval = setInterval(() => {
-        selectedIndex++;
+      if (num !== null) {
+        const maxCount = 10 + Number(num);
+        let interval = setInterval(() => {
+          selectedIndex++;
+          rotateSlot();
+
+          if (selectedIndex >= maxCount) {
+            clearInterval(interval);
+          }
+        }, speed);
+      } else {
+        selectedIndex = 0;
         rotateSlot();
-
-        if (selectedIndex >= maxCount) {
-          clearInterval(interval);
-        }
-      }, speed);
-    } else {
-      selectedIndex = 0;
-      rotateSlot();
+      }
     }
   }, [tick, num]);
 
