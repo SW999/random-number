@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { debounceEvent } from '../services/utils';
 
-const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, step = 1, clear = false, handleChange = _ => {}, disabled = false }) => {
+const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, step = 1, clear = false, handleChange = _ => {}, disabled = false, inputmode = 'text' }) => {
   let refInput = React.useRef(null);
 
   const [validationText, setValidationText] = React.useState('');
@@ -49,6 +49,7 @@ const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 
         min={min}
         step={step}
         onChange={onChange}
+        inputmode={inputmode}
       />
       <span className="validation-text">{ validationText }</span>
     </div>

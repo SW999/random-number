@@ -58,6 +58,7 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
           handleChange={handleMinChange}
           clear={clear}
           disabled={isGenerate}
+          inputmode="numeric"
         />
         <Input
           name="To"
@@ -66,6 +67,7 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
           handleChange={handleMaxChange}
           clear={clear}
           disabled={isGenerate}
+          inputmode="numeric"
         />
       </div>
       <div className="container container-flex">
