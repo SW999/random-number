@@ -1,5 +1,6 @@
 {
   "name": "random-number",
+  "repository": "https://github.com/SW999/random-number",
   "jest": {
     "moduleNameMapper": {
       "^.+\\.svg$": "<rootDir>/svgTransform.js"
@@ -16,7 +17,8 @@
     "clean": "del-cli dist/*",
     "start": "npm run clean && parcel index.html --open",
     "build": "npm run clean && parcel build index.html --public-url ./ --no-cache --no-source-maps",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "prebuild": "npm version patch"
   },
   "author": "",
   "license": "ISC",
