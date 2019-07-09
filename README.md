@@ -5,7 +5,7 @@ Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto
 
 ![Generate a random positive integers in a given range](../master/src/img/screen.jpg)
 
-[View in action](https://sw999.github.io/projects/random/index.html)
+[View in action](https://sw999.github.io/random-number)
 
 ## Technology Stack
 * [Parcel](https://parceljs.org/) web application bundler
