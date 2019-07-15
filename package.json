@@ -1,7 +1,7 @@
 {
   "name": "random-number",
   "repository": "https://github.com/SW999/random-number",
-  "homepage": "https://sw999.github.io/projects/random",
+  "homepage": "https://sw999.github.io/random-number",
   "jest": {
     "moduleNameMapper": {
       "^.+\\.svg$": "<rootDir>/svgTransform.js"

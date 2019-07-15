@@ -1,8 +1,18 @@
 import * as React from 'react';
 import { debounceEvent } from '../services/utils';
 
-const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 0, step = 1, clear = false, handleChange = _ => {}, disabled = false, inputmode = 'text' }) => {
-  let refInput = React.useRef(null);
+const Input = ({
+  name = '',
+  type = 'number',
+  placeholder = 'Input value',
+  min = 0,
+  step = 1,
+  clear = false,
+  handleChange = val => {},
+  disabled = false,
+  inputmode = 'text'
+}) => {
+  let refInput = React.useRef<HTMLInputElement | null>(null);
 
   const [validationText, setValidationText] = React.useState('');
 
@@ -13,10 +23,11 @@ const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 
 
   const debounceValidation = debounceEvent((value) => {
     let timeout;
+    const node = refInput.current;
 
-    if (value !== '' && !isNaN(Number(value)) && value >= min) {
+    if (node && value !== '' && !isNaN(Number(value)) && value >= min) {
       const val = ~~ Number(value);
-      refInput.current.value = val;
+      node.value = String(val);
       clearTimeout(timeout);
       setValidationText('');
       handleChange(val);
@@ -29,8 +40,8 @@ const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 
   }, 1000);
 
   React.useEffect(() => {
-    if (clear || (refInput.current.value !== '' && min > refInput.current.value && !clear)) {
-      refInput.current.value = '';
+    if (clear || (refInput.current.value !== '' && min > Number(refInput.current.value) && !clear)) {
+      refInput.current.value = null;
     }
   }, [min, clear]);
 
@@ -49,7 +60,7 @@ const Input = ({ name = '', type = 'number', placeholder = 'Input value', min = 
         min={min}
         step={step}
         onChange={onChange}
-        inputmode={inputmode}
+        inputMode={inputmode}
       />
       <span className="validation-text">{ validationText }</span>
     </div>
