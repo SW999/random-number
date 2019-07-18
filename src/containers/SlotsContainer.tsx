@@ -1,9 +1,15 @@
 import * as React from 'react';
 import Slot from '../components/Slot';
 import { getRandomInt } from '../services/utils';
+import {ReactElement} from "react";
 
-const SlotsContainer = ({ amount = 1, limits = null }) => {
-  const [slots, setSlots] = React.useState(null);
+interface SlotsContainerProps {
+  amount: number,
+  limits: null | { min: string | number, max: string | number }
+}
+
+const SlotsContainer = ({ amount = 1, limits = null }: SlotsContainerProps) => {
+  const [slots, setSlots] = React.useState<null | Array<ReactElement>>(null);
 
   React.useEffect(() => {
     setSlots(_ => getSlots());

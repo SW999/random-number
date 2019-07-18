@@ -6,12 +6,16 @@ interface MainContainerProps {
   title: string
   name: string | null
 }
+interface LimitsObj {
+  min: string | number,
+  max: string | number
+}
 const MainContainer = ({ title, name }: MainContainerProps) => {
-  const [amount, setAmount] = React.useState(1);
+  const [amount, setAmount] = React.useState<number>(1);
 
-  const [limits, setLimits] = React.useState(null);
+  const [limits, setLimits] = React.useState<LimitsObj | null>(null);
 
-  const valueToAmount = value => {
+  const valueToAmount = (value: string | number) => {
     let val = (value.toString()).length;
     val = val < 1 ? 1 : val;
 
@@ -21,11 +25,11 @@ const MainContainer = ({ title, name }: MainContainerProps) => {
     }
   };
 
-  const doGenerate = ({ min, max }) => {
+  const doGenerate = ({ min, max }: LimitsObj) => {
     setLimits({ min, max });
   };
 
-  const doClear = _ => {
+  const doClear = () => {
     setLimits(null);
     setAmount(1);
   };
