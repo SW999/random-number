@@ -46,6 +46,7 @@
     "enzyme-adapter-react-16": "^1.12.1",
     "gh-pages": "^2.0.1",
     "jest": "^24.7.1",
+    "sass": "^1.22.7",
     "typescript": "^3.5.2"
   }
 }
