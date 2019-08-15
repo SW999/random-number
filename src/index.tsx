@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import Footer from './components/Footer';
 import MainContainer from './containers/MainContainer';
 import './scss/app.scss';
 
-interface AppProps {
+type AppProps = {
   name: string,
   title: string
 }
@@ -12,13 +12,13 @@ interface AppProps {
 class App extends React.Component<AppProps> {
   render() {
     return (
-        <React.Fragment>
+        <Fragment>
           <MainContainer
               name={ this.props.name }
               title={ this.props.title }
           />
           <Footer/>
-        </React.Fragment>
+        </Fragment>
     );
   }
 }
