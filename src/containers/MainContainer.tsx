@@ -4,7 +4,7 @@ import SlotsContainer from './SlotsContainer';
 import Header from '../components/Header';
 interface MainContainerProps {
   title: string
-  name: string | null
+  name: string
 }
 interface LimitsObj {
   min: string | number,
