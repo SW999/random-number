@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "~*": ["./*"]
+      "~*": ["src/*"]
     }
   },
   "files": [ "custom.d.ts" ],

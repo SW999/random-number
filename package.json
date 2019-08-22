@@ -2,6 +2,7 @@
   "name": "random-number",
   "repository": "https://github.com/SW999/random-number",
   "homepage": "https://sw999.github.io/random-number",
+  "main": "src/index.tsx",
   "jest": {
     "moduleNameMapper": {
       "^.+\\.svg$": "<rootDir>/svgTransform.js"
@@ -13,7 +14,6 @@
   },
   "version": "0.1.7",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "clean": "del-cli dist/*",
     "start": "cross-env NODE_ENV=development && npm run clean && parcel index.html --open",
