@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
-import Input from '../../components/Input';
+import Input from '../../src/Components/Input';
 
 jest.useFakeTimers();
 
 describe('Should render Input component and validate', () => {
-  const wrapper = mount(<Input min='2' />);
+  const wrapper = mount(<Input min={2} />);
 
   const input = wrapper.find('input');
 
@@ -32,7 +32,7 @@ describe('Should render Input component and validate', () => {
 
   it('3. Should validate input less than min', () => {
     act(() => {
-      input.getDOMNode().value = 1;
+      input.props().value = 1;
       input.simulate('change');
     });
 
@@ -41,12 +41,12 @@ describe('Should render Input component and validate', () => {
     });
 
     expect(wrapper.find('.validation-text').text()).toEqual('Only positive integers are allowed');
-    expect(wrapper.find('input').instance().value).toEqual('');
+    expect(wrapper.find('input').props().value).toEqual('');
   });
 
   it('4. Should leave correct input', () => {
     act(() => {
-      input.getDOMNode().value = 3;
+      input.props().value = 3;
       input.simulate('change');
     });
 
@@ -55,29 +55,29 @@ describe('Should render Input component and validate', () => {
     });
 
     expect(wrapper.find('.validation-text').text()).toEqual('');
-    expect(input.instance().value).toEqual('3');
+    expect(input.props().value).toEqual('3');
   });
 
   it('4. Should clear value if min was changed and min > current value', () => {
     act(() => {
-      input.getDOMNode().value = 3;
+      input.props().value = 3;
       input.simulate('change');
     });
 
     act(() => {
       jest.advanceTimersByTime(1001);
     });
-    expect(input.instance().value).toEqual('3');
+    expect(input.props().value).toEqual('3');
 
     act(() => {
       wrapper.setProps({ min: 5 });
     });
-    expect(wrapper.find('input').instance().value).toEqual('');
+    expect(wrapper.find('input').props().value).toEqual('');
   });
 });
 
 describe('Should render Input component with default props', () => {
-  const wrapper = mount(<Input />);
+  const wrapper = mount(<Input min={2} />);
   const input =  wrapper.find('input');
 
   it('1. Should add validation message and hide then', () => {
@@ -98,7 +98,7 @@ describe('Should render Input component with default props', () => {
 
   it('2. Should validate input less than min', () => {
     act(() => {
-      input.getDOMNode().value = -1;
+      input.props().value = -1;
       input.simulate('change');
     });
 
@@ -106,12 +106,12 @@ describe('Should render Input component with default props', () => {
       jest.advanceTimersByTime(1001);
     });
     expect(wrapper.find('.validation-text').text()).toEqual('Only positive integers are allowed');
-    expect(input.instance().value).toEqual('');
+    expect(input.props().value).toEqual('');
   });
 
   it('3. Should leave correct input', () => {
     act(() => {
-      wrapper.find('input').getDOMNode().value = 3;
+      wrapper.find('input').props().value = 3;
       wrapper.find('input').simulate('change');
     });
 
@@ -119,6 +119,6 @@ describe('Should render Input component with default props', () => {
       jest.advanceTimersByTime(1001);
     });
     expect(wrapper.find('.validation-text').text()).toEqual('');
-    expect(wrapper.find('input').instance().value).toEqual('3');
+    expect(wrapper.find('input').props().value).toEqual('3');
   });
 });

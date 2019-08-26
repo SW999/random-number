@@ -1,7 +1,7 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
-import Slot from '../../components/Slot';
+import Slot from 'Components/Slot';
 
 jest.useFakeTimers();
 

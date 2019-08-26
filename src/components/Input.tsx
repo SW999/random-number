@@ -2,15 +2,15 @@ import * as React from 'react';
 import { debounceEvent } from '../services/utils';
 
 type InputProps = {
-  name: string,
+  name?: string,
   type?: string,
-  placeholder: string,
+  placeholder?: string,
   min: number,
   step?: number,
-  clear: boolean,
-  handleChange: (val: string | number) => void,
-  disabled: boolean,
-  inputmode: string
+  clear?: boolean,
+  handleChange?: (val: string | number) => void,
+  disabled?: boolean,
+  inputmode?: string
 }
 const Input = ({
   name = '',

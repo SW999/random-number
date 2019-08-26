@@ -3,15 +3,6 @@
   "repository": "https://github.com/SW999/random-number",
   "homepage": "https://sw999.github.io/random-number",
   "main": "src/index.tsx",
-  "jest": {
-    "moduleNameMapper": {
-      "^.+\\.svg$": "<rootDir>/svgTransform.js"
-    },
-    "verbose": false,
-    "setupFilesAfterEnv": [
-      "./src/setupTests.js"
-    ]
-  },
   "version": "0.1.7",
   "description": "",
   "scripts": {
@@ -21,15 +12,12 @@
     "prebuild": "npm version patch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "test": "jest --watch",
+    "test": "jest",
     "lint": "eslint src/ --ext .js --ext .jsx"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/react": "^16.8.20",
-    "@types/react-dom": "^16.8.4",
-    "eslint-plugin-react-hooks": "^1.5.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
@@ -40,17 +28,26 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@types/enzyme": "^3.10.3",
+    "@types/jest": "^24.0.18",
+    "@types/react": "^16.8.20",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-test-renderer": "^16.9.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
     "del-cli": "^1.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.4.0",
     "eslint": "^6.2.2",
     "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.5.0",
     "gh-pages": "^2.0.1",
     "jest": "^24.7.1",
+    "react-test-renderer": "^16.9.0",
     "sass": "^1.22.7",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
   }
 }

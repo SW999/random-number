@@ -6,7 +6,7 @@ Object.defineProperty(global.self, 'crypto', {
     getRandomValues: arr => crypto.randomBytes(arr.length),
   },
 });
-import { getRandomInt, debounceEvent } from '../../services/utils';
+import { getRandomInt, debounceEvent } from 'Services/utils';
 
 describe('Test for getRandomInt', () => {
   test('1. Should generate random number from 0 to 100', () => {
