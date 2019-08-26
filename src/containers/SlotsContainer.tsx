@@ -22,7 +22,7 @@ const SlotsContainer = ({ amount = 1, limits = null }: SlotsContainerProps) => {
 
   const getSlots = () => {
     const random = getRandom();
-    let _slots = [];
+    let _slots: ReactElement[] = [];
 
     for (let i = 0; i < amount; i++) {
       const key = `slot${getRandomInt(0, 9999999)}`;

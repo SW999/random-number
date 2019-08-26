@@ -1,4 +1,4 @@
-export const getRandomInt = (min, max) => {
+export const getRandomInt = (min: number, max: number): number => {
   if (isNaN(Number(min)) || isNaN(Number(max))) {
     throw new RangeError(
       'Min and max are expected to be numbers'
@@ -26,9 +26,9 @@ export const getRandomInt = (min, max) => {
   return min + (byteArray[0] % range);
 };
 
-export const debounceEvent = (callback, delay = 250) => {
-  let interval;
-  return (...args) => {
+export const debounceEvent = (callback: () => void, delay: number = 250) => {
+  let interval: any;
+  return (...args: any) => {
     clearTimeout(interval);
     interval = setTimeout(callback, delay, ...args);
   }

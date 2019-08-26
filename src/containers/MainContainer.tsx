@@ -2,14 +2,17 @@ import * as React from 'react';
 import FormContainer from './FormContainer';
 import SlotsContainer from './SlotsContainer';
 import Header from '../components/Header';
+
 interface MainContainerProps {
-  title: string
+  title: string,
   name: string
 }
+
 interface LimitsObj {
   min: string | number,
   max: string | number
 }
+
 const MainContainer = ({ title, name }: MainContainerProps) => {
   const [amount, setAmount] = React.useState<number>(1);
 

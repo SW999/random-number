@@ -1,12 +1,16 @@
 import * as React from 'react';
 import Input from '../components/Input';
 
-interface ReadyObject {
-  min: string | number;
-  max: string | number;
+type ReadyObject = {
+  min: string | number,
+  max: string | number
 }
-
-const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
+interface FormContainerTypes {
+  onSetMaxValue: (value: string | number) => void;
+  onGenerate: ({ min,  max }: ReadyObject) => void;
+  onClear: () => void
+}
+const FormContainer = ({ onSetMaxValue, onGenerate, onClear }: FormContainerTypes) => {
   const [minValue, setMinValue] = React.useState<number>(1);
 
   const [isGenerate, setIsGenerate] = React.useState<boolean>(false);
@@ -31,14 +35,14 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }) => {
     setTimeout(() => setClear(false), 100);
   };
 
-  const handleMinChange = (value:string) => {
+  const handleMinChange = (value: string | number) => {
     const val = value === '' ? 0 : Number(value);
     const max = Number(ready.max) > val ? ready.max : '';
     setMinValue(val + 1);
     setReadiness({ min: val, max: max });
   };
 
-  const handleMaxChange = (value:string) => setReadiness({ ...ready, max: value });
+  const handleMaxChange = (value: string | number) => setReadiness({ ...ready, max: value });
 
   const checkReadiness = () => {
     onSetMaxValue(ready.max);

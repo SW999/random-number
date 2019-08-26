@@ -6,8 +6,10 @@ describe('Should render Footer', () => {
   let wrapper;
 
   beforeAll(() => {
+    // eslint-disable-next-line no-undef
     const root = global.document.createElement('div');
     root.setAttribute('id', 'footer');
+    // eslint-disable-next-line no-undef
     const body = global.document.querySelector('body');
     body.appendChild(root);
   });

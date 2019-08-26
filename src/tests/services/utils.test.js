@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 
+// eslint-disable-next-line no-undef
 Object.defineProperty(global.self, 'crypto', {
   value: {
     getRandomValues: arr => crypto.randomBytes(arr.length),

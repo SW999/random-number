@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 interface SlotProps {
-  key: string
-  tick: number
+  key: string,
+  tick: number,
   num: number | null
 }
 
