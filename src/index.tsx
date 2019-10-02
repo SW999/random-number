@@ -14,8 +14,8 @@ class App extends React.Component<AppProps> {
     return (
         <Fragment>
           <MainContainer
-              name={ this.props.name }
-              title={ this.props.title }
+            name={ this.props.name }
+            title={ this.props.title }
           />
           <Footer/>
         </Fragment>

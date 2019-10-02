@@ -1,18 +1,18 @@
 import * as React from 'react';
 
 interface SlotProps {
-  key: string,
-  tick: number,
-  num: number | null
+  key: string;
+  tick: number;
+  num: number | null;
 }
 
 const Slot = ({ tick = 4, num = null }: SlotProps) => {
   let ref = React.useRef<HTMLDivElement | null>(null);
 
   let selectedIndex = 0;
-  let cellHeight = 0;
-  let radius = 0;
-  let speed = 430;
+  let cellHeight = 0; // TODO: save to state
+  let radius = 0; // TODO: save to state
+  let speed = 430; // TODO: save to state
 
   const [errorMessage, setError] = React.useState('');
 

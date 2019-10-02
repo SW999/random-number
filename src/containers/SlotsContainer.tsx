@@ -12,11 +12,11 @@ const SlotsContainer = ({ amount = 1, limits = null }: SlotsContainerProps) => {
   const [slots, setSlots] = React.useState<null | Array<ReactElement>>(null);
 
   React.useEffect(() => {
-    setSlots(_ => getSlots());
+    setSlots(() => getSlots());
   }, [amount, limits]);
 
   const getRandom = () => {
-    let random = limits === null ? '' : getRandomInt(limits.min, limits.max);
+    let random = limits === null ? '' : getRandomInt(Number(limits.min), Number(limits.max));
     return random === '' ? '' : (random.toString()).padStart(amount, '0');
   };
 
@@ -27,7 +27,7 @@ const SlotsContainer = ({ amount = 1, limits = null }: SlotsContainerProps) => {
     for (let i = 0; i < amount; i++) {
       const key = `slot${getRandomInt(0, 9999999)}`;
       const tick = getRandomInt(3, 6);
-      const num = random === '' ? null : random[i];
+      const num = random === '' ? null : Number(random[i]);
       _slots = [ ..._slots, <Slot key={key} tick={tick} num={num}/> ];
     }
 

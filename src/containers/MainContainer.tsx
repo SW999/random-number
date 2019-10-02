@@ -1,6 +1,6 @@
 import * as React from 'react';
 import FormContainer from './FormContainer';
-import SlotsContainer from './SlotsContainer';
+const SlotsContainer = React.lazy(() => import('./SlotsContainer'));
 import Header from '../components/Header';
 
 interface MainContainerProps {
@@ -40,7 +40,9 @@ const MainContainer = ({ title, name }: MainContainerProps) => {
   return (
     <div className="container">
       <Header title={title} name={name}/>
-      <SlotsContainer amount={amount} limits={limits}/>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <SlotsContainer amount={amount} limits={limits}/>
+      </React.Suspense>
       <FormContainer onSetMaxValue={valueToAmount} onGenerate={doGenerate} onClear={doClear}/>
     </div>
   )
