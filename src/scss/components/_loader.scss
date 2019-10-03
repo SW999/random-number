@@ -1,0 +1,39 @@
+.loader {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  margin: 15.1rem auto;
+  text-align: center;
+
+  &::before {
+    content: 'Loading...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 1rem;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6rem;
+    height: 6rem;
+    border: .7rem solid rgba(white, 0.1);
+    border-left-color: #1b9228;
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    animation: donut-spin 1.4s linear infinite;
+  }
+}
+
+@keyframes donut-spin {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+}

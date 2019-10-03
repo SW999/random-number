@@ -40,7 +40,7 @@ const MainContainer = ({ title, name }: MainContainerProps) => {
   return (
     <div className="container">
       <Header title={title} name={name}/>
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <React.Suspense fallback={<div className="loader" />}>
         <SlotsContainer amount={amount} limits={limits}/>
       </React.Suspense>
       <FormContainer onSetMaxValue={valueToAmount} onGenerate={doGenerate} onClear={doClear}/>
