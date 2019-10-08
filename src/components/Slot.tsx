@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface SlotProps {
   key: string;
@@ -7,16 +7,16 @@ interface SlotProps {
 }
 
 const Slot = ({ tick = 4, num = null }: SlotProps) => {
-  let ref = React.useRef<HTMLDivElement | null>(null);
+  let ref = useRef<HTMLDivElement | null>(null);
 
   let selectedIndex = 0;
   let cellHeight = 0; // TODO: save to state
   let radius = 0; // TODO: save to state
   let speed = 430; // TODO: save to state
 
-  const [errorMessage, setError] = React.useState('');
+  const [errorMessage, setError] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref.current) {
       cellHeight = ref.current.offsetHeight;
       radius = Math.round((cellHeight / 2) / Math.tan(Math.PI / 10));
@@ -25,7 +25,7 @@ const Slot = ({ tick = 4, num = null }: SlotProps) => {
     }
   }, [tick]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (ref.current) {
       propsValidation();
 
@@ -33,7 +33,7 @@ const Slot = ({ tick = 4, num = null }: SlotProps) => {
         const maxCount = 10 + Number(num);
         let interval = setInterval(() => {
           selectedIndex++;
-          rotateSlot();
+          rotateSlot(); // TODO: try to useMemo instead
 
           if (selectedIndex >= maxCount) {
             clearInterval(interval);
@@ -41,7 +41,7 @@ const Slot = ({ tick = 4, num = null }: SlotProps) => {
         }, speed);
       } else {
         selectedIndex = 0;
-        rotateSlot();
+        rotateSlot(); // TODO: try to useMemo instead
       }
     }
   }, [tick, num]);
