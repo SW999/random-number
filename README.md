@@ -1,11 +1,17 @@
 # Random number
-Experiment: generate a random positive integers in a given range.
+
+[View in action](https://sw999.github.io/random-number)
+
+An experiment: generate a random positive integers in a given range.
 
 Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto API in browsers.
 
 ![Generate a random positive integers in a given range](../master/src/img/screen.jpg)
-
-[View in action](https://sw999.github.io/random-number)
+<p align="center">
+  <a href="https://github.com/SW999/random-number/tags">
+    <img src="https://img.shields.io/github/v/tag/SW999/random-number.svg?sort=semver" alt="Version">
+  </a>
+</p>
 
 ## Technology Stack
 * [Parcel](https://parceljs.org/) web application bundler
