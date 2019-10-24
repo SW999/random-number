@@ -60,6 +60,6 @@ npx majestic
 - [x] Add "Clear" button
 - [x] Add validation text
 - [x] Add Header component with tooltip
-- [x] Add tests
 - [ ] Add comments
-- [ ] Rewrite to TypeScript
+- [x] Rewrite to TypeScript
+- [ ] Fix tests
