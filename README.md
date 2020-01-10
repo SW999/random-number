@@ -6,9 +6,11 @@ An experiment: generate a random positive integers in a given range.
 
 Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto API in browsers.
 
-![Generate a random positive integers in a given range](../master/src/img/screen.jpg)
+![Generate a random positive integers in a given range](https://user-images.githubusercontent.com/3176886/72165995-7c9ff900-33d9-11ea-9665-5fd971a84369.jpg)
 <p align="center">
-![screen](https://user-images.githubusercontent.com/3176886/72165995-7c9ff900-33d9-11ea-9665-5fd971a84369.jpg)
+  <a href="https://github.com/SW999/random-number/tags">
+    <img src="https://img.shields.io/github/v/tag/SW999/random-number.svg?sort=semver" alt="Version">	
+  </a>
 </p>
 
 ## Technology Stack
