@@ -8,15 +8,14 @@ Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto
 
 ![Generate a random positive integers in a given range](../master/src/img/screen.jpg)
 <p align="center">
-  <a href="https://github.com/SW999/random-number/tags">
-    <img src="https://img.shields.io/github/v/tag/SW999/random-number.svg?sort=semver" alt="Version">
-  </a>
+![screen](https://user-images.githubusercontent.com/3176886/72165995-7c9ff900-33d9-11ea-9665-5fd971a84369.jpg)
 </p>
 
 ## Technology Stack
 * [Parcel](https://parceljs.org/) web application bundler
-* [React](https://reactjs.org/) to play with Hooks
+* [React](https://reactjs.org/) with TypeScript
 * [SASS](https://sass-lang.com/)
+* [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
 
 ## Getting started
 
