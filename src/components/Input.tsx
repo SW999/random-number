@@ -1,31 +1,29 @@
 import * as React from 'react';
+import { useRef, useEffect, useState, KeyboardEvent } from 'react';
 import { debounceEvent } from '../services/utils';
 
 type InputProps = {
-  name?: string,
-  type?: string,
-  placeholder?: string,
-  min: number,
-  step?: number,
   clear?: boolean,
-  handleChange?: (val: string | number) => void,
   disabled?: boolean,
-  inputmode?: string
+  handleChange?: (val: string | number) => void,
+  min: number,
+  name?: string,
+  placeholder?: string,
+  step?: number,
 }
-const Input = ({
-  name = '',
-  type = 'number',
-  placeholder = 'Input value',
-  min = 0,
-  step = 1,
-  clear = false,
-  handleChange = () => {},
-  disabled = false,
-  inputmode = 'text'
-}: InputProps) => {
-  let refInput = React.useRef<HTMLInputElement | null>(null);
 
-  const [validationText, setValidationText] = React.useState('');
+const Input = ({
+  clear = false,
+  disabled = false,
+  handleChange = () => {},
+  min = 0,
+  name = '',
+  placeholder = 'Input value',
+  step = 1,
+}: InputProps) => {
+  let refInput = useRef<HTMLInputElement | null>(null);
+
+  const [validationText, setValidationText] = useState('');
 
   const onChange = (e: { target: { value: string; }; }) => {
     debounceValidation(e.target.value);
@@ -47,11 +45,21 @@ const Input = ({
       }
       setValidationText('Only positive integers are allowed');
       handleChange('');
-      timeout = setTimeout(_ => setValidationText(''), 4000);
+      timeout = setTimeout(() => setValidationText(''), 4000);
     }
   }, 1000);
 
-  React.useEffect(() => {
+  // Disallow enter 'e', '+', '-' in number input
+  const disableUnexpectedSymbols = (
+    e: KeyboardEvent<HTMLInputElement>
+  ): void => {
+    const key = e.key || e.keyCode;
+    if (['e', 'E', '+', '-', 69, 107, 109].includes(key)) {
+      e.preventDefault();
+    }
+  };
+
+  useEffect(() => {
     const node = refInput.current;
     if (node && clear || (node && node.value !== '' && min > Number(node.value) && !clear)) {
       node.value = '';
@@ -60,20 +68,19 @@ const Input = ({
 
   return (
     <div className="form-group">
-      <label className="form-label" htmlFor={`${name}-${type}-${min}`}>{name}</label>
+      <label className="form-label" htmlFor={`${name}-${min}`}>{name}</label>
       <input
-        ref={refInput}
-        id={`${name}-${type}-${min}`}
         className="form-input"
-        required
         disabled={disabled}
-
-        type={type}
-        placeholder={placeholder}
+        id={`${name}-${min}`}
         min={min}
-        step={step}
         onChange={onChange}
-        inputMode={inputmode}
+        onKeyDown={disableUnexpectedSymbols}
+        placeholder={placeholder}
+        ref={refInput}
+        required
+        step={step}
+        type="number"
       />
       <span className="validation-text">{ validationText }</span>
     </div>
