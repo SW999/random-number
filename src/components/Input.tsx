@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useRef, useEffect, useState, KeyboardEvent } from 'react';
+import { useRef, useEffect, useState, KeyboardEvent, ChangeEvent } from 'react';
 import { debounceEvent } from '../services/utils';
 
 type InputProps = {
   clear?: boolean,
   disabled?: boolean,
-  handleChange?: (val: string | number) => void,
+  handleChange: (val: string | number) => void,
   min: number,
   name?: string,
   placeholder?: string,
@@ -15,23 +15,21 @@ type InputProps = {
 const Input = ({
   clear = false,
   disabled = false,
-  handleChange = () => {},
+  handleChange,
   min = 0,
   name = '',
   placeholder = 'Input value',
   step = 1,
 }: InputProps) => {
-  let refInput = useRef<HTMLInputElement | null>(null);
-
+  const refInput = useRef<HTMLInputElement | null>(null);
   const [validationText, setValidationText] = useState('');
-
-  const onChange = (e: { target: { value: string; }; }) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     debounceValidation(e.target.value);
   };
 
   const debounceValidation = debounceEvent((value: string) => {
     let timeout;
-    const node = refInput.current;
+    const node = refInput?.current;
 
     if (node && value !== '' && !isNaN(Number(value)) && Number(value) >= min) {
       const val = ~~ Number(value);
@@ -54,13 +52,14 @@ const Input = ({
     e: KeyboardEvent<HTMLInputElement>
   ): void => {
     const key = e.key || e.keyCode;
+
     if (['e', 'E', '+', '-', 69, 107, 109].includes(key)) {
       e.preventDefault();
     }
   };
 
   useEffect(() => {
-    const node = refInput.current;
+    const node = refInput?.current;
     if (node && clear || (node && node.value !== '' && min > Number(node.value) && !clear)) {
       node.value = '';
     }

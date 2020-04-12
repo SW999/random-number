@@ -1,14 +1,14 @@
 import * as React from 'react';
+import { FunctionComponent } from 'react';
 
 type HeaderType = {
   name: string,
-  title: string
+  title?: string
 }
 
-const Header = ({ name = '', title = '' }: HeaderType) => {
-  return (
-    <h1>{name} <sup className="warning tooltip" data-tooltip={title}>*</sup></h1>
-  )
-};
-
-export default Header
+export const Header: FunctionComponent<HeaderType> = ({
+  name,
+  title
+}) => (
+    <h1>{name} {title && (<sup className="warning tooltip" data-tooltip={title}>*</sup>)}</h1>
+  );

@@ -1,28 +1,32 @@
-import * as React from 'react';
+import * as React from 'react'
+import { useState, FunctionComponent, MouseEvent } from 'react';
 import Input from '../components/Input';
 
 type ReadyObject = {
-  min: string | number,
-  max: string | number
+  min: string | number;
+  max: string | number;
 }
-interface FormContainerTypes {
+
+type FormContainerTypes = {
+  onClear: () => void;
+  onGenerate: (o: ReadyObject) => void;
   onSetMaxValue: (value: string | number) => void;
-  onGenerate: ({ min,  max }: ReadyObject) => void;
-  onClear: () => void
 }
-const FormContainer = ({ onSetMaxValue, onGenerate, onClear }: FormContainerTypes) => {
-  const [minValue, setMinValue] = React.useState<number>(1);
 
-  const [isGenerate, setIsGenerate] = React.useState<boolean>(false);
-
-  const [clear, setClear] = React.useState<boolean>(false);
-
-  const [ready, setReadiness] = React.useState<ReadyObject>({
+const FormContainer: FunctionComponent<FormContainerTypes> = ({
+  onClear,
+  onGenerate,
+  onSetMaxValue,
+}) => {
+  const [minValue, setMinValue] = useState<number>(1); // FIXME
+  const [isGenerate, setIsGenerate] = useState<boolean>(false); // FIXME
+  const [clear, setClear] = useState<boolean>(false); // FIXME
+  const [ready, setReadiness] = useState<ReadyObject>({ // FIXME
     min: '',
     max: ''
   });
 
-  const handleClear = (e: React.MouseEvent) => {
+  const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setClear(true);
     setMinValue(1);
@@ -50,7 +54,7 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }: FormContainerType
     return ready.min !== '' && ready.max !== '' && !isGenerate;
   };
 
-  const handleGenerate = (e: React.MouseEvent) => {
+  const handleGenerate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     onGenerate(ready);
     setIsGenerate(true);
@@ -58,7 +62,7 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }: FormContainerType
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className="container container-flex">
         <Input
           name="From"
@@ -79,13 +83,18 @@ const FormContainer = ({ onSetMaxValue, onGenerate, onClear }: FormContainerType
       </div>
       <div className="container container-flex">
         {!isGenerate &&
-        <button onClick={handleGenerate} disabled={!checkReadiness()} title={checkReadiness() ? '' : 'Add limits first'}>Generate !</button>
+        <button
+          onClick={handleGenerate}
+          disabled={!checkReadiness()}
+          title={checkReadiness() ? '' : 'Add limits first'}>
+          Generate !
+        </button>
         }
         {isGenerate &&
         <button onClick={handleClear}>Clear</button>
         }
       </div>
-    </React.Fragment>
+    </>
   )
 };
 

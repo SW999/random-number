@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { lazy, useState } from 'react';
 import FormContainer from './FormContainer';
-const SlotsContainer = React.lazy(() => import('./SlotsContainer'));
-import Header from '../components/Header';
+const SlotsContainer = lazy(() => import('./SlotsContainer'));
+import { Header } from '../components/Header';
 
 interface MainContainerProps {
   title: string,
@@ -14,10 +15,8 @@ interface LimitsObj {
 }
 
 const MainContainer = ({ title, name }: MainContainerProps) => {
-  const [amount, setAmount] = React.useState<number>(1);
-
-  const [limits, setLimits] = React.useState<LimitsObj | null>(null);
-
+  const [amount, setAmount] = useState<number>(1);
+  const [limits, setLimits] = useState<LimitsObj | null>(null);
   const valueToAmount = (value: string | number) => {
     let val = (value.toString()).length;
     val = val < 1 ? 1 : val;
@@ -28,10 +27,7 @@ const MainContainer = ({ title, name }: MainContainerProps) => {
     }
   };
 
-  const doGenerate = ({ min, max }: LimitsObj) => {
-    setLimits({ min, max });
-  };
-
+  const doGenerate = ({ min, max }: LimitsObj) => setLimits({ min, max });
   const doClear = () => {
     setLimits(null);
     setAmount(1);

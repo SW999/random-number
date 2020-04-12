@@ -1,17 +1,27 @@
 import React, { useEffect, useRef, FunctionComponent, useCallback } from 'react';
 
-type SlotProps = {
-  tick: 3 | 4 | 5 | 6;
-  num: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | null;
+export type SlotProps = {
+  tick: number;//3 | 4 | 5 | 6;
+  num: number | null;//0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | null;
 }
 
-const Slot: FunctionComponent<SlotProps> = ({ tick, num }) => {
+export const Slot: FunctionComponent<SlotProps> = ({
+  num,
+  tick,
+}) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  let radius = 0;
+  const radius = useRef<number>(0);
+  const rotateSlot = useCallback((index) => {
+    const angle = -36 * index;
+    ref.current.style.transform = `translateZ(-${radius.current}px) rotateX(${angle}deg)`;
+  }, []);
 
   useEffect(() => {
-    if (ref.current) {
-      radius = Math.round((ref.current.offsetHeight / 2) / Math.tan(Math.PI / 10));
+    radius.current = Math.round((ref?.current?.offsetHeight / 2) / Math.tan(Math.PI / 10));
+  }, []);
+
+  useEffect(() => {
+    if (ref?.current) {
       ref.current.style.transition = `transform .${tick}s`;
 
       if (num === null) {
@@ -30,12 +40,7 @@ const Slot: FunctionComponent<SlotProps> = ({ tick, num }) => {
         }, speed);
       }
     }
-  }, [num]);
-
-  const rotateSlot = useCallback((index) => {
-    const angle = -36 * index;
-    ref.current.style.transform = `translateZ(-${radius}px) rotateX(${angle}deg)`;
-  }, []);
+  }, [num, rotateSlot, tick]);
 
   return (
       <div className="slot-wrapper">
@@ -54,5 +59,3 @@ const Slot: FunctionComponent<SlotProps> = ({ tick, num }) => {
       </div>
     )
 };
-
-export default Slot
