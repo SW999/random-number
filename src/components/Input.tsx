@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useRef, useEffect, useState, KeyboardEvent, ChangeEvent } from 'react';
-import { debounceEvent } from '../services/utils';
+import { useRef, useEffect, useState, ChangeEvent } from 'react';
+import { debounceEvent, checkNumbers } from '../services/utils';
 
 type InputProps = {
   clear?: boolean,
@@ -47,17 +47,6 @@ const Input = ({
     }
   }, 1000);
 
-  // Disallow enter 'e', '+', '-' in number input
-  const disableUnexpectedSymbols = (
-    e: KeyboardEvent<HTMLInputElement>
-  ): void => {
-    const key = e.key || e.keyCode;
-
-    if (['e', 'E', '+', '-', 69, 107, 109].includes(key)) {
-      e.preventDefault();
-    }
-  };
-
   useEffect(() => {
     const node = refInput?.current;
     if (node && clear || (node && node.value !== '' && min > Number(node.value) && !clear)) {
@@ -74,7 +63,7 @@ const Input = ({
         id={`${name}-${min}`}
         min={min}
         onChange={onChange}
-        onKeyDown={disableUnexpectedSymbols}
+        onKeyDown={checkNumbers}
         placeholder={placeholder}
         ref={refInput}
         required
