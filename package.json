@@ -3,7 +3,7 @@
   "repository": "https://github.com/SW999/random-number",
   "homepage": "https://sw999.github.io/random-number",
   "main": "src/index.tsx",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "",
   "scripts": {
     "clean": "del-cli dist/*",
