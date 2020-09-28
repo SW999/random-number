@@ -1,17 +1,16 @@
-import * as React from 'react'
-import { useState, FunctionComponent, MouseEvent } from 'react';
+import React, { useState, FunctionComponent, MouseEvent } from 'react';
 import Input from '../components/Input';
 
 type ReadyObject = {
   min: string | number;
   max: string | number;
-}
+};
 
 type FormContainerTypes = {
   onClear: () => void;
   onGenerate: (o: ReadyObject) => void;
   onSetMaxValue: (value: string | number) => void;
-}
+};
 
 const FormContainer: FunctionComponent<FormContainerTypes> = ({
   onClear,
@@ -21,9 +20,10 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
   const [minValue, setMinValue] = useState<number>(1); // FIXME
   const [isGenerate, setIsGenerate] = useState<boolean>(false); // FIXME
   const [clear, setClear] = useState<boolean>(false); // FIXME
-  const [ready, setReadiness] = useState<ReadyObject>({ // FIXME
+  const [ready, setReadiness] = useState<ReadyObject>({
+    // FIXME
     min: '',
-    max: ''
+    max: '',
   });
 
   const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
@@ -32,7 +32,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
     setMinValue(1);
     setReadiness({
       min: '',
-      max: ''
+      max: '',
     });
     setIsGenerate(false);
     onClear();
@@ -46,7 +46,8 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
     setReadiness({ min: val, max: max });
   };
 
-  const handleMaxChange = (value: string | number) => setReadiness({ ...ready, max: value });
+  const handleMaxChange = (value: string | number) =>
+    setReadiness({ ...ready, max: value });
 
   const checkReadiness = () => {
     onSetMaxValue(ready.max);
@@ -82,20 +83,19 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
         />
       </div>
       <div className="container container-flex">
-        {!isGenerate &&
-        <button
-          onClick={handleGenerate}
-          disabled={!checkReadiness()}
-          title={checkReadiness() ? '' : 'Add limits first'}>
-          Generate !
-        </button>
-        }
-        {isGenerate &&
-        <button onClick={handleClear}>Clear</button>
-        }
+        {!isGenerate && (
+          <button
+            onClick={handleGenerate}
+            disabled={!checkReadiness()}
+            title={checkReadiness() ? '' : 'Add limits first'}
+          >
+            Generate !
+          </button>
+        )}
+        {isGenerate && <button onClick={handleClear}>Clear</button>}
       </div>
     </>
-  )
+  );
 };
 
-export default FormContainer
+export default FormContainer;

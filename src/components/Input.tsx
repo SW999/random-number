@@ -1,18 +1,23 @@
-import * as React from 'react';
-import { useRef, useEffect, useState, ChangeEvent } from 'react';
-import { debounceEvent, checkNumbers } from '../services/utils';
+import React, {
+  FunctionComponent,
+  useRef,
+  useEffect,
+  useState,
+  ChangeEvent,
+} from 'react';
+import { debounceEvent, checkNumbers } from '../utils';
 
 type InputProps = {
-  clear?: boolean,
-  disabled?: boolean,
-  handleChange: (val: string | number) => void,
-  min: number,
-  name?: string,
-  placeholder?: string,
-  step?: number,
-}
+  clear?: boolean;
+  disabled?: boolean;
+  handleChange: (val: string | number) => void;
+  min: number;
+  name?: string;
+  placeholder?: string;
+  step?: number;
+};
 
-const Input = ({
+const Input: FunctionComponent<InputProps> = ({
   clear = false,
   disabled = false,
   handleChange,
@@ -20,19 +25,15 @@ const Input = ({
   name = '',
   placeholder = 'Input value',
   step = 1,
-}: InputProps) => {
+}) => {
   const refInput = useRef<HTMLInputElement | null>(null);
   const [validationText, setValidationText] = useState('');
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    debounceValidation(e.target.value);
-  };
-
   const debounceValidation = debounceEvent((value: string) => {
     let timeout;
     const node = refInput?.current;
 
     if (node && value !== '' && !isNaN(Number(value)) && Number(value) >= min) {
-      const val = ~~ Number(value);
+      const val = ~~Number(value);
       node.value = String(val);
       clearTimeout(timeout);
       setValidationText('');
@@ -46,17 +47,24 @@ const Input = ({
       timeout = setTimeout(() => setValidationText(''), 4000);
     }
   }, 1000);
+  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+    debounceValidation(e.target.value);
 
   useEffect(() => {
     const node = refInput?.current;
-    if (node && clear || (node && node.value !== '' && min > Number(node.value) && !clear)) {
+    if (
+      (node && clear) ||
+      (node && node.value !== '' && min > Number(node.value) && !clear)
+    ) {
       node.value = '';
     }
   }, [min, clear]);
 
   return (
     <div className="form-group">
-      <label className="form-label" htmlFor={`${name}-${min}`}>{name}</label>
+      <label className="form-label" htmlFor={`${name}-${min}`}>
+        {name}
+      </label>
       <input
         className="form-input"
         disabled={disabled}
@@ -70,9 +78,9 @@ const Input = ({
         step={step}
         type="number"
       />
-      <span className="validation-text">{ validationText }</span>
+      <span className="validation-text">{validationText}</span>
     </div>
-  )
+  );
 };
 
-export default Input
+export default Input;

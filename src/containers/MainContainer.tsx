@@ -1,24 +1,26 @@
-import * as React from 'react';
-import { lazy, useState } from 'react';
+import React, { FunctionComponent, lazy, useState, Suspense } from 'react';
 import FormContainer from './FormContainer';
+import Header from '../components/Header';
 const SlotsContainer = lazy(() => import('./SlotsContainer'));
-import { Header } from '../components/Header';
 
-interface MainContainerProps {
-  title: string,
-  name: string
-}
+type MainContainerProps = {
+  title: string;
+  name: string;
+};
 
-interface LimitsObj {
-  min: string | number,
-  max: string | number
-}
+type LimitsObj = {
+  min: string | number;
+  max: string | number;
+};
 
-const MainContainer = ({ title, name }: MainContainerProps) => {
+const MainContainer: FunctionComponent<MainContainerProps> = ({
+  name,
+  title,
+}) => {
   const [amount, setAmount] = useState<number>(1);
   const [limits, setLimits] = useState<LimitsObj | null>(null);
   const valueToAmount = (value: string | number) => {
-    let val = (value.toString()).length;
+    let val = value.toString().length;
     val = val < 1 ? 1 : val;
 
     if (val !== amount) {
@@ -35,13 +37,17 @@ const MainContainer = ({ title, name }: MainContainerProps) => {
 
   return (
     <div className="container">
-      <Header title={title} name={name}/>
-      <React.Suspense fallback={<div className="loader spin-loader-margins" />}>
+      <Header title={title} name={name} />
+      <Suspense fallback={<div className="loader spin-loader-margins" />}>
         <SlotsContainer amount={amount} limits={limits} />
-      </React.Suspense>
-      <FormContainer onSetMaxValue={valueToAmount} onGenerate={doGenerate} onClear={doClear}/>
+      </Suspense>
+      <FormContainer
+        onSetMaxValue={valueToAmount}
+        onGenerate={doGenerate}
+        onClear={doClear}
+      />
     </div>
-  )
+  );
 };
 
-export default MainContainer
+export default MainContainer;
