@@ -4,7 +4,6 @@ import React, {
   FunctionComponent,
   useCallback,
 } from 'react';
-
 export type SlotProps = {
   tick: number; // 3 | 4 | 5 | 6;
   num: number | null; // 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | null;
@@ -50,16 +49,11 @@ const Slot: FunctionComponent<SlotProps> = ({ num, tick }) => {
   return (
     <div className="slot-wrapper">
       <div className="slot" ref={ref}>
-        <div className="slot__cell">0</div>
-        <div className="slot__cell">1</div>
-        <div className="slot__cell">2</div>
-        <div className="slot__cell">3</div>
-        <div className="slot__cell">4</div>
-        <div className="slot__cell">5</div>
-        <div className="slot__cell">6</div>
-        <div className="slot__cell">7</div>
-        <div className="slot__cell">8</div>
-        <div className="slot__cell">9</div>
+        {[...Array(10).keys()].map(key => (
+          <div key={key} className="slot__cell">
+            {key}
+          </div>
+        ))}
       </div>
     </div>
   );

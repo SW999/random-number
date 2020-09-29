@@ -5,7 +5,7 @@ import React, {
   useState,
   ChangeEvent,
 } from 'react';
-import { debounceEvent, checkNumbers } from '../utils';
+import { debounce, checkNumbers } from '../utils';
 
 type InputProps = {
   clear?: boolean;
@@ -28,7 +28,7 @@ const Input: FunctionComponent<InputProps> = ({
 }) => {
   const refInput = useRef<HTMLInputElement | null>(null);
   const [validationText, setValidationText] = useState('');
-  const debounceValidation = debounceEvent((value: string) => {
+  const debounceValidation = debounce((value: string) => {
     let timeout;
     const node = refInput?.current;
 

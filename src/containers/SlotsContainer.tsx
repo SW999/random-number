@@ -36,7 +36,7 @@ const SlotsContainer: FunctionComponent<SlotsContainerProps> = ({
         const num = random === '' ? null : Number(random[i]);
         _slots = [
           ..._slots,
-          <Slot key={key} tick={getRandomInt(3, 6)} num={num} />,
+          <Slot key={key} tick={getRandomInt(3, 5)} num={num} />,
         ];
       }
 

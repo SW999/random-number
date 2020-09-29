@@ -43,7 +43,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
     const val = value === '' ? 0 : Number(value);
     const max = Number(ready.max) > val ? ready.max : '';
     setMinValue(val + 1);
-    setReadiness({ min: val, max: max });
+    setReadiness({ max, min: val });
   };
 
   const handleMaxChange = (value: string | number) =>
