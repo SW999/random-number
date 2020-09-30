@@ -19,10 +19,17 @@ body {
 }
 
 h1 {
-  margin: 4rem 0;
+  margin: 1rem 0;
   text-shadow: 1px 1px 1px $white;
-  font: 5rem 'Righteous', cursive;
+  font: 4rem 'Righteous', cursive;
+  line-height: 1;
   text-align: center;
+
+  @include mq(tablet) {
+    margin: 4rem 0;
+    font-size: 5rem;
+    line-height: normal;
+  }
 }
 
 .content {

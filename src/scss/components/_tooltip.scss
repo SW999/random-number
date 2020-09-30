@@ -20,32 +20,50 @@
     border-right: solid 1rem transparent;
     border-top: solid 1rem $grey;
     z-index: 3;
-    transform: translateX(-50%) translateY(-2rem) scale(0);
+    transform: translateX(-50%) translateY(0);
+    opacity: 0;
   }
 
   &:after {
     content: attr(data-tooltip);
+    display: flex;
+    flex-wrap: nowrap;
+    width: 30rem;
     bottom: 3.4rem;
     padding: .6rem 1rem;
     border-radius: 2px;
     color: $white;
-    font: 1.5rem Arial;
+    font-size: 1.5rem;
+    font-family: Arial;
     text-shadow: none;
-    white-space: nowrap;
     z-index: 2;
     background-color: $grey;
-    transform: translateX(-50%) scale(0);
+    transform: translateX(-85%) scale(0);
+
+    @include mq(tablet) {
+      display: block;
+      width: auto;
+      white-space: nowrap;
+      transform: translateX(-50%) scale(0);
+    }
   }
 
   &:hover {
     &:before {
-      transform: translateX(-50%) translateY(0) scale(1);
-      transition: transform .4s cubic-bezier(.29, .15, .5, 1.46);
+      //transform: translateX(-50%) translateY(0) scale(1);
+      //transition: transform .4s cubic-bezier(.29, .15, .5, 1.46);
+      transition: opacity .2s cubic-bezier(.29, .15, .5, 1.46);
+      transition-delay: .2s;
+      opacity: 1;
     }
 
     &:after {
-      transform: translateX(-50%) scale(1);
+      transform: translateX(-85%) scale(1);
       transition: transform .4s cubic-bezier(.29, .15, .5, 1.46);
+
+      @include mq(tablet) {
+        transform: translateX(-50%) scale(1);
+      }
     }
   }
 }

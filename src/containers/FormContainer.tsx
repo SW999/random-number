@@ -1,58 +1,54 @@
-import * as React from 'react'
-import { useState, FunctionComponent, MouseEvent } from 'react';
+import React, { useState, FunctionComponent, MouseEvent } from 'react';
 import Input from '../components/Input';
 
 type ReadyObject = {
   min: string | number;
   max: string | number;
-}
+};
 
 type FormContainerTypes = {
   onClear: () => void;
   onGenerate: (o: ReadyObject) => void;
   onSetMaxValue: (value: string | number) => void;
-}
+};
 
 const FormContainer: FunctionComponent<FormContainerTypes> = ({
   onClear,
   onGenerate,
   onSetMaxValue,
 }) => {
-  const [minValue, setMinValue] = useState<number>(1); // FIXME
-  const [isGenerate, setIsGenerate] = useState<boolean>(false); // FIXME
-  const [clear, setClear] = useState<boolean>(false); // FIXME
-  const [ready, setReadiness] = useState<ReadyObject>({ // FIXME
+  const [minValue, setMinValue] = useState<number>(1);
+  const [isGenerate, setIsGenerate] = useState<boolean>(false);
+  const [clear, setClear] = useState<boolean>(false);
+  const [ready, setReadiness] = useState<ReadyObject>({
     min: '',
-    max: ''
+    max: '',
   });
 
-  const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleClear = () => {
     setClear(true);
     setMinValue(1);
     setReadiness({
       min: '',
-      max: ''
+      max: '',
     });
     setIsGenerate(false);
     onClear();
-    setTimeout(() => setClear(false), 100);
   };
 
   const handleMinChange = (value: string | number) => {
     const val = value === '' ? 0 : Number(value);
     const max = Number(ready.max) > val ? ready.max : '';
     setMinValue(val + 1);
-    setReadiness({ min: val, max: max });
+    setReadiness({ max, min: val });
   };
 
-  const handleMaxChange = (value: string | number) => setReadiness({ ...ready, max: value });
-
-  const checkReadiness = () => {
-    onSetMaxValue(ready.max);
-
-    return ready.min !== '' && ready.max !== '' && !isGenerate;
+  const handleMaxChange = (value: string | number) => {
+    setReadiness({ ...ready, max: value });
+    onSetMaxValue(value);
   };
+
+  const isFormReady = ready.min !== '' && ready.max !== '' && !isGenerate;
 
   const handleGenerate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -63,7 +59,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
 
   return (
     <>
-      <div className="container container-flex">
+      <div className="container container--flex container--flex-mobile">
         <Input
           name="From"
           placeholder="Min value"
@@ -81,21 +77,20 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
           disabled={isGenerate}
         />
       </div>
-      <div className="container container-flex">
-        {!isGenerate &&
-        <button
-          onClick={handleGenerate}
-          disabled={!checkReadiness()}
-          title={checkReadiness() ? '' : 'Add limits first'}>
-          Generate !
-        </button>
-        }
-        {isGenerate &&
-        <button onClick={handleClear}>Clear</button>
-        }
+      <div className="container container--flex">
+        {!isGenerate && (
+          <button
+            onClick={handleGenerate}
+            disabled={!isFormReady}
+            title={isFormReady ? '' : 'Add limits first'}
+          >
+            Generate !
+          </button>
+        )}
+        {isGenerate && <button onClick={handleClear}>Clear</button>}
       </div>
     </>
-  )
+  );
 };
 
-export default FormContainer
+export default FormContainer;

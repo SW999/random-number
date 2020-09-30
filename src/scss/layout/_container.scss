@@ -2,10 +2,17 @@
   max-width: 68rem;
   margin: 0 auto;
 
-  &-flex {
+  &--flex {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
+  }
+
+  &--flex-mobile {
+    flex-direction: column;
+
+    @include mq(tablet) {
+      flex-direction: row;
+    }
   }
 }
