@@ -14,7 +14,9 @@ const Slot: FunctionComponent<SlotProps> = ({ num, tick }) => {
   const radius = useRef<number>(0);
   const rotateSlot = useCallback(index => {
     const angle = -36 * index;
-    ref.current.style.transform = `translateZ(-${radius.current}px) rotateX(${angle}deg)`;
+    if (ref?.current) {
+      ref.current.style.transform = `translateZ(-${radius.current}px) rotateX(${angle}deg)`;
+    }
   }, []);
 
   useEffect(() => {

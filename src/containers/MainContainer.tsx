@@ -1,22 +1,14 @@
-import React, { FunctionComponent, lazy, useState, Suspense } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import FormContainer from './FormContainer';
 import Header from '../components/Header';
-const SlotsContainer = lazy(() => import('./SlotsContainer'));
-
-type MainContainerProps = {
-  title: string;
-  name: string;
-};
+import SlotsContainer from './SlotsContainer';
 
 type LimitsObj = {
   min: string | number;
   max: string | number;
 };
 
-const MainContainer: FunctionComponent<MainContainerProps> = ({
-  name,
-  title,
-}) => {
+const MainContainer: FunctionComponent = () => {
   const [amount, setAmount] = useState<number>(1);
   const [limits, setLimits] = useState<LimitsObj | null>(null);
   const valueToAmount = (value: string | number) => {
@@ -37,10 +29,8 @@ const MainContainer: FunctionComponent<MainContainerProps> = ({
 
   return (
     <div className="container">
-      <Header title={title} name={name} />
-      <Suspense fallback={<div className="loader spin-loader-margins" />}>
-        <SlotsContainer amount={amount} limits={limits} />
-      </Suspense>
+      <Header />
+      <SlotsContainer amount={amount} limits={limits} />
       <FormContainer
         onSetMaxValue={valueToAmount}
         onGenerate={doGenerate}

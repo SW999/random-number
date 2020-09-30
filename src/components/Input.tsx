@@ -14,7 +14,6 @@ type InputProps = {
   min: number;
   name?: string;
   placeholder?: string;
-  step?: number;
 };
 
 const Input: FunctionComponent<InputProps> = ({
@@ -24,38 +23,33 @@ const Input: FunctionComponent<InputProps> = ({
   min = 0,
   name = '',
   placeholder = 'Input value',
-  step = 1,
 }) => {
   const refInput = useRef<HTMLInputElement | null>(null);
   const [validationText, setValidationText] = useState('');
-  const debounceValidation = debounce((value: string) => {
-    let timeout;
-    const node = refInput?.current;
+  const validate = debounce((value: string) => {
+    const val = Number(value);
+    if (refInput?.current) {
+      refInput.current.value = value;
+    }
 
-    if (node && value !== '' && !isNaN(Number(value)) && Number(value) >= min) {
-      const val = ~~Number(value);
-      node.value = String(val);
-      clearTimeout(timeout);
-      setValidationText('');
+    if (value !== '' && !isNaN(val) && val >= min && Number.isInteger(val)) {
       handleChange(val);
+      setValidationText('');
     } else {
-      if (node) {
-        node.value = '';
-      }
-      setValidationText('Only positive integers are allowed');
-      handleChange('');
-      timeout = setTimeout(() => setValidationText(''), 4000);
+      setValidationText(
+        val >= min
+          ? 'Only positive integers are allowed'
+          : 'Should be more than start value'
+      );
     }
   }, 1000);
+
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
-    debounceValidation(e.target.value);
+    validate(e.target.value);
 
   useEffect(() => {
     const node = refInput?.current;
-    if (
-      (node && clear) ||
-      (node && node.value !== '' && min > Number(node.value) && !clear)
-    ) {
+    if (node && clear) {
       node.value = '';
     }
   }, [min, clear]);
@@ -66,19 +60,20 @@ const Input: FunctionComponent<InputProps> = ({
         {name}
       </label>
       <input
-        className="form-input"
-        disabled={disabled}
+        ref={refInput}
         id={`${name}-${min}`}
+        className="form-input"
         min={min}
         onChange={onChange}
         onKeyDown={checkNumbers}
         placeholder={placeholder}
-        ref={refInput}
         required
-        step={step}
         type="number"
+        disabled={disabled}
       />
-      <span className="validation-text">{validationText}</span>
+      {validationText && (
+        <span className="validation-text">{validationText}</span>
+      )}
     </div>
   );
 };

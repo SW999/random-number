@@ -17,17 +17,15 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
   onGenerate,
   onSetMaxValue,
 }) => {
-  const [minValue, setMinValue] = useState<number>(1); // FIXME
-  const [isGenerate, setIsGenerate] = useState<boolean>(false); // FIXME
-  const [clear, setClear] = useState<boolean>(false); // FIXME
+  const [minValue, setMinValue] = useState<number>(1);
+  const [isGenerate, setIsGenerate] = useState<boolean>(false);
+  const [clear, setClear] = useState<boolean>(false);
   const [ready, setReadiness] = useState<ReadyObject>({
-    // FIXME
     min: '',
     max: '',
   });
 
-  const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleClear = () => {
     setClear(true);
     setMinValue(1);
     setReadiness({
@@ -36,7 +34,6 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
     });
     setIsGenerate(false);
     onClear();
-    setTimeout(() => setClear(false), 100);
   };
 
   const handleMinChange = (value: string | number) => {
@@ -46,14 +43,12 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
     setReadiness({ max, min: val });
   };
 
-  const handleMaxChange = (value: string | number) =>
+  const handleMaxChange = (value: string | number) => {
     setReadiness({ ...ready, max: value });
-
-  const checkReadiness = () => {
-    onSetMaxValue(ready.max);
-
-    return ready.min !== '' && ready.max !== '' && !isGenerate;
+    onSetMaxValue(value);
   };
+
+  const isFormReady = ready.min !== '' && ready.max !== '' && !isGenerate;
 
   const handleGenerate = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -64,7 +59,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
 
   return (
     <>
-      <div className="container container-flex">
+      <div className="container container--flex container--flex-mobile">
         <Input
           name="From"
           placeholder="Min value"
@@ -82,12 +77,12 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
           disabled={isGenerate}
         />
       </div>
-      <div className="container container-flex">
+      <div className="container container--flex">
         {!isGenerate && (
           <button
             onClick={handleGenerate}
-            disabled={!checkReadiness()}
-            title={checkReadiness() ? '' : 'Add limits first'}
+            disabled={!isFormReady}
+            title={isFormReady ? '' : 'Add limits first'}
           >
             Generate !
           </button>
