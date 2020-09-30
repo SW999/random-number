@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { createPortal } from 'react-dom';
+import { version } from '../../package.json';
 import github from '../img/github.svg';
 
 const footerEl: HTMLElement | null = document.getElementById('footer');
@@ -14,7 +15,7 @@ function Footer() {
       >
         <img src={github} alt="github" width="24" height="24" />
       </a>{' '}
-      © SW999 2020
+      | Siarhei Vaitehovich | {`v. ${version}`}
     </span>
   );
 

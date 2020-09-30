@@ -1,19 +1,17 @@
-import React, { FunctionComponent, memo } from 'react';
+import React, { memo } from 'react';
 
-type HeaderType = {
-  name: string;
-  title?: string;
-};
-
-const Header: FunctionComponent<HeaderType> = ({ name, title }) => (
-  <h1>
-    {name}{' '}
-    {title && (
-      <sup className="warning tooltip" data-tooltip={title}>
+function Header() {
+  return (
+    <h1>
+      Random number generator{' '}
+      <sup
+        className="warning tooltip"
+        data-tooltip="Generator of random positive integers in a given range"
+      >
         *
       </sup>
-    )}
-  </h1>
-);
+    </h1>
+  );
+}
 
 export default memo(Header);

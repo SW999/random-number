@@ -14,7 +14,7 @@ interface SlotsContainerProps {
 
 const SlotsContainer: FunctionComponent<SlotsContainerProps> = ({
   amount = 1,
-  limits = null,
+  limits,
 }) => {
   const [slots, setSlots] = useState<null | ReactElement[]>(null);
 
@@ -46,7 +46,7 @@ const SlotsContainer: FunctionComponent<SlotsContainerProps> = ({
     setSlots(() => getSlots());
   }, [amount, limits]);
 
-  return <div className="container container-flex">{slots}</div>;
+  return <div className="container container--flex">{slots}</div>;
 };
 
 export default SlotsContainer;
