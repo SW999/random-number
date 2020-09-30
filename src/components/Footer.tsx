@@ -3,8 +3,6 @@ import { createPortal } from 'react-dom';
 import { version } from '../../package.json';
 import github from '../img/github.svg';
 
-const footerEl: HTMLElement | null = document.getElementById('footer');
-
 function Footer() {
   const FooterContent = (
     <span>
@@ -19,7 +17,7 @@ function Footer() {
     </span>
   );
 
-  return footerEl === null ? null : createPortal(FooterContent, footerEl);
+  return createPortal(FooterContent, document.getElementById('footer'));
 }
 
 export default memo(Footer);
