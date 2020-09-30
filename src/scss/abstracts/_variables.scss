@@ -9,3 +9,14 @@ $grey: #777;
 $pink: #e91e63;
 
 $transition-cubic: cubic-bezier(.64,.09,.08,1);
+
+$breakpoints: (
+    "phone":        400px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+    "tablet-wide":  1024px,
+    "desktop":      1248px,
+    "desktop-wide": 1440px
+);

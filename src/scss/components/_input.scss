@@ -1,16 +1,26 @@
 .form {
   &-group {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    max-width: calc(50% - 2.3rem);
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    max-width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 
-    &:not(:nth-child(1)) {
-      margin-left: 2.3rem;
+    @include mq(tablet) {
+      max-width: calc(50% - 2.3rem);
+      margin-left: 0;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+
+      &:not(:nth-child(1)) {
+        margin-left: 2.3rem;
+      }
     }
 
     .validation-text {
+      position: absolute;
+      bottom: -2.8rem;
       flex: 0 1 100%;
       max-width: 30rem;
       color: $white;
@@ -49,23 +59,31 @@
 }
 
 button {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  padding: 1em 3em;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1.6rem 3.6rem;
   border: thin solid $grey-dark;
   border-radius: 8px;
   overflow: hidden;
   color: lighten($grey, 10%);
   font-size: 3rem;
   cursor: unset;
-  background: linear-gradient($grey 0%, $grey-dark, 40%, $black-lighten 100%);
+  background: darken($grey, 5%);
   transition: background .6s ease-in;
+
+  @include mq(tablet) {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 1.6rem 4.8rem;
+    font-size: 3rem;
+  }
 
   &:not(:disabled) {
     border-color: $grey;
     cursor: pointer;
     color: $white;
     animation: pulse .9s 2;
+    background: linear-gradient($grey 0%, $grey-dark, 40%, $black-lighten 100%);
   }
 
   &:active {
