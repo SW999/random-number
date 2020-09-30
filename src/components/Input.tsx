@@ -36,13 +36,14 @@ const Input: FunctionComponent<InputProps> = ({
       handleChange(val);
       setValidationText('');
     } else {
+      handleChange('');
       setValidationText(
         val >= min
-          ? 'Only positive integers are allowed'
+          ? 'Only integers are allowed'
           : 'Should be more than start value'
       );
     }
-  }, 1000);
+  }, 800);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
     validate(e.target.value);
