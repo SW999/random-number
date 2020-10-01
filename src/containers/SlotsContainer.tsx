@@ -34,10 +34,8 @@ const SlotsContainer: FunctionComponent<SlotsContainerProps> = ({
       for (let i = 0; i < amount; i++) {
         const key = `slot${getRandomInt(0, 9999999)}`;
         const num = random === '' ? null : Number(random[i]);
-        _slots = [
-          ..._slots,
-          <Slot key={key} tick={getRandomInt(3, 5)} num={num} />,
-        ];
+        const tick = getRandomInt(3, 5);
+        _slots = [..._slots, <Slot key={key} tick={tick} num={num} />];
       }
 
       return _slots;
