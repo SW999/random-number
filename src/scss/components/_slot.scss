@@ -11,6 +11,8 @@
   text-align: center;
   perspective: 1000px;
   background: linear-gradient($black-lighten 0%, $grey-darken 35%, $grey-dark 55%, $grey-darken 55%, $black 100%);
+  transform: translateX(0);
+  transition: transform .55s ease-in-out;
 
   &:not(:nth-child(1)) {
     margin-left: .3rem;

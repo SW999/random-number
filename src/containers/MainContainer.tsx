@@ -30,7 +30,7 @@ const MainContainer: FunctionComponent = () => {
   return (
     <div className="container">
       <Header />
-      <SlotsContainer amount={amount} limits={limits} />
+      <SlotsContainer amount={!limits ? 1 : amount} limits={limits} />
       <FormContainer
         onSetMaxValue={valueToAmount}
         onGenerate={doGenerate}
