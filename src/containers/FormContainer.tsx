@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent, MouseEvent } from 'react';
+import React, { useState, FunctionComponent, FormEvent } from 'react';
 import Input from '../components/Input';
 
 type ReadyObject = {
@@ -50,7 +50,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
 
   const isFormReady = ready.min !== '' && ready.max !== '' && !isGenerate;
 
-  const handleGenerate = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleGenerate = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onGenerate(ready);
     setIsGenerate(true);
@@ -58,7 +58,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
   };
 
   return (
-    <>
+    <form onSubmit={handleGenerate}>
       <div className="container container--flex container--flex-mobile">
         <Input
           name="From"
@@ -80,16 +80,21 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
       <div className="container container--flex">
         {!isGenerate && (
           <button
-            onClick={handleGenerate}
+            // onClick={handleGenerate}
+            type="submit"
             disabled={!isFormReady}
             title={isFormReady ? '' : 'Add limits first'}
           >
             Generate !
           </button>
         )}
-        {isGenerate && <button onClick={handleClear}>Clear</button>}
+        {isGenerate && (
+          <button onClick={handleClear} type="button">
+            Clear
+          </button>
+        )}
       </div>
-    </>
+    </form>
   );
 };
 
