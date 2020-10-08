@@ -37,8 +37,8 @@ const Slot: FunctionComponent<SlotProps> = ({ amount, index, num, tick }) => {
   };
 
   useEffect(() => {
-    if (ref?.current) {
-      setTimeout(() => {
+    setTimeout(() => {
+      if (ref?.current?.style) {
         ref.current.style.transition = `transform .${tick}s`;
 
         if (num === null) {
@@ -57,8 +57,8 @@ const Slot: FunctionComponent<SlotProps> = ({ amount, index, num, tick }) => {
             }
           }, speed);
         }
-      }, 600);
-    }
+      }
+    }, 600);
   }, [num, rotateSlot, tick]);
 
   useEffect(() => {

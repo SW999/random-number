@@ -80,10 +80,9 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
       <div className="container container--flex">
         {!isGenerate && (
           <button
-            // onClick={handleGenerate}
             type="submit"
             disabled={!isFormReady}
-            title={isFormReady ? '' : 'Add limits first'}
+            title={isFormReady ? null : 'Add limits first'}
           >
             Generate !
           </button>

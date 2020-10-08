@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, act, waitFor } from '@testing-library/react';
 import Slot from './Slot';
 
 const mockedProps = {
@@ -10,15 +10,40 @@ const mockedProps = {
 };
 
 describe('Slot component', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
   it('Slot should take a snapshot for initial state', () => {
     const { asFragment } = render(<Slot {...mockedProps} />);
 
     expect(asFragment()).toMatchSnapshot('Slot initial');
   });
 
-  it('Slot should take a snapshot', () => {
-    const { asFragment } = render(<Slot {...mockedProps} amount={2} />);
+  it('Slot should take a snapshot 1', async () => {
+    const { asFragment } = render(
+      <Slot {...mockedProps} amount={2} num={4} tick={5} />
+    );
 
-    expect(asFragment()).toMatchSnapshot('Slot');
+    act(() => jest.advanceTimersByTime(700));
+
+    await waitFor(() => {
+      expect(asFragment()).toMatchSnapshot('Slot 1');
+    });
+  });
+
+  it('Slot should take a snapshot 2', async () => {
+    const { asFragment } = render(
+      <Slot {...mockedProps} amount={3} num={5} tick={6} />
+    );
+
+    act(() => jest.advanceTimersByTime(700));
+
+    await waitFor(() => {
+      expect(asFragment()).toMatchSnapshot('Slot 2');
+    });
   });
 });

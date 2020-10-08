@@ -8,8 +8,7 @@ Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto
 
 ![Generate a random positive integers in a given range](https://user-images.githubusercontent.com/3176886/72165995-7c9ff900-33d9-11ea-9665-5fd971a84369.jpg)
 <p align="center">
-  <a href="https://github.com/SW999/random-number/tags">
-    <img src="https://img.shields.io/github/v/tag/SW999/random-number.svg?sort=semver" alt="Version">	
+<a href="https://github.com/sw999/random-number/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/sw999/random-number.svg?style=flat-square" alt="License"></a> <a href="https://github.com/SW999/random-number/tags"><img src="https://img.shields.io/github/v/tag/sw999/random-number.svg?sort=semver&style=flat-square" alt="Version"></a> ![GitHub last commit](https://img.shields.io/github/last-commit/sw999/random-number.svg?style=flat-square)
   </a>
 </p>
 
@@ -18,6 +17,7 @@ Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto
 * [React](https://reactjs.org/) with TypeScript
 * [SASS](https://sass-lang.com/)
 * [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
+* progressive web application (PWA)
 
 ## Getting started
 
@@ -61,6 +61,8 @@ npx majestic
 - [x] Add "Clear" button
 - [x] Add validation text
 - [x] Add Header component with tooltip
-- [ ] Add comments
 - [x] Rewrite to TypeScript
-- [ ] Fix tests
+- [x] Fix tests
+- [x] Create progressive web application (PWA)
+
+Done!
