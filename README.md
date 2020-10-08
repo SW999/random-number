@@ -1,16 +1,14 @@
 # Random number
 
-[View in action](https://sw999.github.io/random-number)
+[Demo](https://sw999.github.io/random-number)
 
 An experiment: generate a random positive integers in a given range.
 
 Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto API in browsers.
 
-![Generate a random positive integers in a given range](https://user-images.githubusercontent.com/3176886/72165995-7c9ff900-33d9-11ea-9665-5fd971a84369.jpg)
-<p align="center">
+![Generate a random positive integers in a given range](https://user-images.githubusercontent.com/3176886/95495971-d6554400-09a8-11eb-8bf4-70cced9beae0.jpg)
+
 <a href="https://github.com/sw999/random-number/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/sw999/random-number.svg?style=flat-square" alt="License"></a> <a href="https://github.com/SW999/random-number/tags"><img src="https://img.shields.io/github/v/tag/sw999/random-number.svg?sort=semver&style=flat-square" alt="Version"></a> ![GitHub last commit](https://img.shields.io/github/last-commit/sw999/random-number.svg?style=flat-square)
-  </a>
-</p>
 
 ## Technology Stack
 * [Parcel](https://parceljs.org/) web application bundler
