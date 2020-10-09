@@ -6,8 +6,8 @@ import React, {
 } from 'react';
 
 const slotWidth = 103;
-const calculateShift = (amount: number, index: number): string | 0 => {
-  if (amount < 2) return 0;
+const calculateShift = (amount: number, index: number): string | null => {
+  if (amount < 2) return null;
 
   const isOdd = amount % 2 > 0;
   const slotsAverage = isOdd ? Math.ceil(amount / 2) : amount / 2;
@@ -32,9 +32,13 @@ const Slot: FunctionComponent<SlotProps> = ({ amount, index, num, tick }) => {
     }
   }, []);
   const shift = calculateShift(amount, index);
-  const style = {
-    transform: `translateX(${shift})`,
-  };
+  const style = shift
+    ? {
+        style: {
+          transform: `translateX(${shift})`,
+        },
+      }
+    : null;
 
   useEffect(() => {
     if (ref?.current) {
@@ -64,10 +68,14 @@ const Slot: FunctionComponent<SlotProps> = ({ amount, index, num, tick }) => {
   }, [num, rotateSlot, tick]);
 
   useEffect(() => {
-    if (ref?.current?.parentNode && shift !== 0) {
-      (ref.current.parentNode as HTMLDivElement).removeAttribute('style');
+    if (amount > 1 && ref?.current?.parentNode) {
+      setTimeout(
+        () =>
+          (ref.current.parentNode as HTMLDivElement).removeAttribute('style'),
+        100
+      );
     }
-  }, [shift]);
+  }, [amount]);
 
   useEffect(() => {
     radius.current = Math.round(
@@ -76,7 +84,7 @@ const Slot: FunctionComponent<SlotProps> = ({ amount, index, num, tick }) => {
   }, []);
 
   return (
-    <div className="slot-wrapper" style={style}>
+    <div className="slot-wrapper" {...style}>
       <div className="slot" ref={ref}>
         {[...Array(10).keys()].map(key => (
           <div key={key} className="slot__cell">

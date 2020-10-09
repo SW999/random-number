@@ -132,7 +132,6 @@ exports[`Slot component Slot should take a snapshot for initial state: Slot init
 <DocumentFragment>
   <div
     class="slot-wrapper"
-    style="transform: translateX(0);"
   >
     <div
       class="slot"
