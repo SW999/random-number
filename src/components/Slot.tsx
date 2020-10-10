@@ -6,9 +6,7 @@ import React, {
 } from 'react';
 
 const slotWidth = 103;
-const calculateShift = (amount: number, index: number): string | null => {
-  if (amount < 2) return null;
-
+const calculateShift = (amount: number, index: number): string => {
   const isOdd = amount % 2 > 0;
   const slotsAverage = isOdd ? Math.ceil(amount / 2) : amount / 2;
   const shiftFactor = isOdd ? slotsAverage - index : slotsAverage - index + 0.5;
@@ -31,14 +29,15 @@ const Slot: FunctionComponent<SlotProps> = ({ amount, index, num, tick }) => {
       ref.current.style.transform = `translateZ(-${radius.current}px) rotateX(${angle}deg)`;
     }
   }, []);
-  const shift = calculateShift(amount, index);
-  const style = shift
-    ? {
-        style: {
-          transform: `translateX(${shift})`,
-        },
-      }
-    : null;
+
+  const style =
+    amount > 1
+      ? {
+          style: {
+            transform: `translateX(${calculateShift(amount, index)})`,
+          },
+        }
+      : null;
 
   useEffect(() => {
     if (ref?.current) {
