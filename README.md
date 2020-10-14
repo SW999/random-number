@@ -15,6 +15,7 @@ Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto
 * [React](https://reactjs.org/) with TypeScript
 * [SASS](https://sass-lang.com/)
 * [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
+* Tests via Jest and @testing-library/react
 * progressive web application (PWA)
 
 ## Getting started
