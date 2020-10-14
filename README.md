@@ -10,7 +10,7 @@ Instead of using the unsafe `Math.random()`, *Random number* uses the Web Crypto
 
 <a href="https://github.com/sw999/random-number/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/sw999/random-number.svg?style=flat-square" alt="License"></a> <a href="https://github.com/SW999/random-number/tags"><img src="https://img.shields.io/github/v/tag/sw999/random-number.svg?sort=semver&style=flat-square" alt="Version"></a> ![GitHub last commit](https://img.shields.io/github/last-commit/sw999/random-number.svg?style=flat-square)
 
-## Technology Stack
+## Built With
 * [Parcel](https://parceljs.org/) web application bundler
 * [React](https://reactjs.org/) with TypeScript
 * [SASS](https://sass-lang.com/)
@@ -55,13 +55,6 @@ or
 npx majestic
 ```
 
-## To do:
+## License
 
-- [x] Add "Clear" button
-- [x] Add validation text
-- [x] Add Header component with tooltip
-- [x] Rewrite to TypeScript
-- [x] Fix tests
-- [x] Create progressive web application (PWA)
-
-Done!
+MIT © Siarhei Vaitehovich
