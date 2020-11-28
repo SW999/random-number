@@ -8,8 +8,8 @@ const mockedProps = {
   onSetMaxValue: jest.fn(),
 };
 
-jest.mock('../utils', () => ({
-  debounce: func => func,
+jest.mock('../hooks', () => ({
+  useDebounce: func => func,
 }));
 
 describe('FormContainer component', () => {

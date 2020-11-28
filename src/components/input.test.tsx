@@ -8,8 +8,8 @@ const mockedProps = {
   name: 'To',
 };
 
-jest.mock('../utils', () => ({
-  debounce: func => func,
+jest.mock('../hooks', () => ({
+  useDebounce: func => func,
 }));
 
 describe('Input component', () => {

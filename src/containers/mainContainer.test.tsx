@@ -4,7 +4,10 @@ import MainContainer from './MainContainer';
 
 jest.mock('../utils', () => ({
   getRandomInt: () => 42,
-  debounce: func => func,
+}));
+
+jest.mock('../hooks', () => ({
+  useDebounce: func => func,
 }));
 
 describe('MainContainer component', () => {

@@ -5,7 +5,8 @@ import React, {
   useState,
   ChangeEvent,
 } from 'react';
-import { debounce, checkNumbers } from '../utils';
+import { checkNumbers } from '../utils';
+import { useDebounce } from '../hooks';
 
 type InputProps = {
   clear?: boolean;
@@ -26,7 +27,7 @@ const Input: FunctionComponent<InputProps> = ({
 }) => {
   const refInput = useRef<HTMLInputElement | null>(null);
   const [validationText, setValidationText] = useState('');
-  const validate = debounce((value: string) => {
+  const validate = useDebounce((value: string) => {
     const val = Number(value);
     if (refInput?.current) {
       refInput.current.value = value;
