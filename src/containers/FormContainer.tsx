@@ -17,7 +17,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
   onGenerate,
   onSetMaxValue,
 }) => {
-  const [minValue, setMinValue] = useState<number>(1);
+  const [minValue, setMinValue] = useState<null | number>(null);
   const [isGenerate, setIsGenerate] = useState<boolean>(false);
   const [clear, setClear] = useState<boolean>(false);
   const [ready, setReadiness] = useState<ReadyObject>({
@@ -27,7 +27,7 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
 
   const handleClear = () => {
     setClear(true);
-    setMinValue(1);
+    setMinValue(null);
     setReadiness({
       min: '',
       max: '',
@@ -61,27 +61,28 @@ const FormContainer: FunctionComponent<FormContainerTypes> = ({
     <form onSubmit={handleGenerate}>
       <div className="container container--flex container--flex-mobile">
         <Input
+          clear={clear}
+          disabled={isGenerate}
+          handleChange={handleMinChange}
+          min={0}
           name="From"
           placeholder="Min value"
-          min={0}
-          handleChange={handleMinChange}
-          clear={clear}
-          disabled={isGenerate}
         />
         <Input
+          clear={clear}
+          disabled={!minValue || isGenerate}
+          handleChange={handleMaxChange}
+          min={minValue}
           name="To"
           placeholder="Max value"
-          min={minValue}
-          handleChange={handleMaxChange}
-          clear={clear}
-          disabled={isGenerate}
+          title={minValue ? null : 'Add min value first'}
         />
       </div>
       <div className="container container--flex">
         {!isGenerate && (
           <button
-            type="submit"
             disabled={!isFormReady}
+            type="submit"
             title={isFormReady ? null : 'Add limits first'}
           >
             Generate !

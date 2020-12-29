@@ -85,13 +85,13 @@ exports[`MainContainer component MainContainer should take a snapshot: MainConta
         >
           <label
             class="form-label"
-            for="From-0"
+            for="From"
           >
             From
           </label>
           <input
             class="form-input"
-            id="From-0"
+            id="From"
             min="0"
             placeholder="Min value"
             required=""
@@ -103,16 +103,17 @@ exports[`MainContainer component MainContainer should take a snapshot: MainConta
         >
           <label
             class="form-label"
-            for="To-1"
+            for="To"
           >
             To
           </label>
           <input
             class="form-input"
-            id="To-1"
-            min="1"
+            disabled=""
+            id="To"
             placeholder="Max value"
             required=""
+            title="Add min value first"
             type="number"
           />
         </div>

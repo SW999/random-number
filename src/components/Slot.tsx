@@ -14,13 +14,18 @@ const calculateShift = (amount: number, index: number): string => {
 };
 
 export type SlotProps = {
-  amount: number;
-  index: number;
-  num: number | null; // 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | null;
-  tick: number; // 3 | 4 | 5 | 6;
+  amount?: number;
+  index?: number;
+  num?: number | null; // 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | null;
+  tick?: number; // 3 | 4 | 5 | 6;
 };
 
-const Slot: FunctionComponent<SlotProps> = ({ amount, index, num, tick }) => {
+const Slot: FunctionComponent<SlotProps> = ({
+  amount = 1,
+  index = 1,
+  num = null,
+  tick = 3,
+}) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const radius = useRef<number>(0);
   const rotateSlot = useCallback(index => {

@@ -75,7 +75,7 @@ describe('FormContainer component', () => {
     fireEvent.click(screen.getByText('Clear'));
 
     await waitFor(() => {
-      expect(screen.getByLabelText('To')).toHaveAttribute('min', '1');
+      expect(screen.getByLabelText('To')).not.toHaveAttribute('min');
       expect(
         screen.queryByRole('button', { name: 'Clear' })
       ).not.toBeInTheDocument();

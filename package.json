@@ -122,6 +122,6 @@
     "tslint-react": "^4.1.0",
     "tslint-react-hooks": "^2.2.2",
     "typescript": "3.8.3",
-    "workbox-cli": "^5.1.4"
+    "workbox-cli": "^6.0.2"
   }
 }

@@ -15,6 +15,7 @@ type InputProps = {
   min: number;
   name?: string;
   placeholder?: string;
+  title?: string;
 };
 
 const Input: FunctionComponent<InputProps> = ({
@@ -24,6 +25,7 @@ const Input: FunctionComponent<InputProps> = ({
   min = 0,
   name = '',
   placeholder = 'Input value',
+  title,
 }) => {
   const refInput = useRef<HTMLInputElement | null>(null);
   const [validationText, setValidationText] = useState('');
@@ -58,20 +60,21 @@ const Input: FunctionComponent<InputProps> = ({
 
   return (
     <div className="form-group">
-      <label className="form-label" htmlFor={`${name}-${min}`}>
+      <label className="form-label" htmlFor={name}>
         {name}
       </label>
       <input
         ref={refInput}
-        id={`${name}-${min}`}
         className="form-input"
+        disabled={disabled}
+        id={name}
         min={min}
         onChange={onChange}
         onKeyDown={checkNumbers}
         placeholder={placeholder}
         required
+        title={title}
         type="number"
-        disabled={disabled}
       />
       {validationText && (
         <span className="validation-text">{validationText}</span>

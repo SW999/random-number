@@ -19,38 +19,28 @@ const SlotsContainer: FunctionComponent<SlotsContainerProps> = ({
   const [slots, setSlots] = useState<null | ReactElement[]>(null);
 
   useEffect(() => {
-    const getRandom = () => {
-      const random =
-        limits === null
-          ? ''
-          : getRandomInt(Number(limits.min), Number(limits.max));
-      return random === '' ? '' : random.toString().padStart(amount, '0');
-    };
-    const getSlots = () => {
-      const random = getRandom();
-      let _slots: ReactElement[] = [];
+    if (limits === null) {
+      setSlots([<Slot key={0} />]);
+      return;
+    }
 
-      // tslint:disable-next-line:no-increment-decrement
-      for (let i = 0; i < amount; i++) {
-        const key = `slot${getRandomInt(0, 9999999)}`;
-        const num = random === '' ? null : Number(random[i]);
-        const tick = getRandomInt(3, 5);
-        _slots = [
-          ..._slots,
-          <Slot
-            key={key}
-            amount={amount}
-            index={i + 1}
-            num={num}
-            tick={tick}
-          />,
-        ];
-      }
+    const random = getRandomInt(Number(limits.min), Number(limits.max))
+      .toString()
+      .padStart(amount, '0');
 
-      return _slots;
-    };
+    let _slots: ReactElement[] = [];
 
-    setSlots(() => getSlots());
+    for (let i = 0; i < amount; i += 1) {
+      const num = Number(random[i]);
+      const key = `slot${num}${i}`;
+      const tick = getRandomInt(3, 5);
+      _slots = [
+        ..._slots,
+        <Slot key={key} amount={amount} index={i + 1} num={num} tick={tick} />,
+      ];
+    }
+
+    setSlots(_slots);
   }, [amount, limits]);
 
   return <div className="container container--flex">{slots}</div>;
