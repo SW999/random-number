@@ -1,6 +1,6 @@
 .tooltip {
   position: relative;
-  font-size: 2rem;
+  font-size: 2.4rem;
   cursor: pointer;
 
   &:before,
@@ -50,16 +50,15 @@
 
   &:hover {
     &:before {
-      //transform: translateX(-50%) translateY(0) scale(1);
-      //transition: transform .4s cubic-bezier(.29, .15, .5, 1.46);
-      transition: opacity .2s cubic-bezier(.29, .15, .5, 1.46);
-      transition-delay: .2s;
+      transition: opacity .3s cubic-bezier(.29, .15, .5, 1.46);
+      transition-delay: .6s;
       opacity: 1;
     }
 
     &:after {
       transform: translateX(-80%) scale(1);
       transition: transform .4s cubic-bezier(.29, .15, .5, 1.46);
+      transition-delay: .35s;
 
       @include mq(tablet) {
         transform: translateX(-50%) scale(1);

@@ -28,17 +28,21 @@ const SlotsContainer: FunctionComponent<SlotsContainerProps> = ({
       .toString()
       .padStart(amount, '0');
 
-    let _slots: ReactElement[] = [];
-
-    for (let i = 0; i < amount; i += 1) {
-      const num = Number(random[i]);
-      const key = `slot${num}${i}`;
+    const _slots: ReactElement[] = [...Array(amount).keys()].map(key => {
+      const num = Number(random[key]);
+      const _key = `slot${num}${key}`;
       const tick = getRandomInt(3, 5);
-      _slots = [
-        ..._slots,
-        <Slot key={key} amount={amount} index={i + 1} num={num} tick={tick} />,
-      ];
-    }
+
+      return (
+        <Slot
+          key={_key}
+          amount={amount}
+          index={key + 1}
+          num={num}
+          tick={tick}
+        />
+      );
+    });
 
     setSlots(_slots);
   }, [amount, limits]);
