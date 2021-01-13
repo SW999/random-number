@@ -67,9 +67,6 @@
     },
     "testRegex": "(<rootDir>/src/.*|(\\.|/)(test|spec))\\.tsx?$"
   },
-  "staticFiles": {
-    "watcherGlob": "**"
-  },
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -105,9 +102,7 @@
     "markdown-to-jsx": "^6.11.4",
     "node-sass": "^4.14.1",
     "parcel-bundler": "1.12.4",
-    "parcel-plugin-static-files-copy": "^2.4.4",
     "prettier": "^2.0.5",
-    "react-hook-form": "^4.10.2",
     "react-test-renderer": "^16.13.1",
     "regenerator-runtime": "^0.13.5",
     "sass": "1.23.3",
