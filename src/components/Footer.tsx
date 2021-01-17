@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import { createPortal } from 'react-dom';
-import { version } from '../../package.json';
 import github from '~img/github.svg';
 
 function Footer() {
@@ -13,7 +12,7 @@ function Footer() {
       >
         <img src={github} alt="github" width="24" height="24" />
       </a>{' '}
-      | Siarhei Vaitehovich | {`v. ${version}`}
+      | Siarhei Vaitehovich | {`v. ${process.env.npm_package_version}`}
     </span>
   );
 
