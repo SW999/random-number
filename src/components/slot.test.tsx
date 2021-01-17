@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, act, waitFor } from '@testing-library/react';
-import Slot from './Slot';
+import Slot from '~components/Slot';
 
 const mockedProps = {
   amount: 1,

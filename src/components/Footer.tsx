@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { createPortal } from 'react-dom';
 import { version } from '../../package.json';
-import github from '../img/github.svg';
+import github from '~img/github.svg';
 
 function Footer() {
   const FooterContent = (

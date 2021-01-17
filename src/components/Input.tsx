@@ -5,8 +5,8 @@ import React, {
   useState,
   ChangeEvent,
 } from 'react';
-import { checkNumbers } from '../utils';
-import { useDebounce } from '../hooks';
+import { checkNumbers } from '~utils';
+import { useDebounce } from '~hooks';
 
 type InputProps = {
   clear?: boolean;

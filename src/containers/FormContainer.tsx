@@ -1,5 +1,5 @@
 import React, { useState, FunctionComponent, FormEvent } from 'react';
-import Input from '../components/Input';
+import Input from '~components/Input';
 
 type ReadyObject = {
   min: string | number;

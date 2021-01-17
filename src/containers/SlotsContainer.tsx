@@ -4,8 +4,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import Slot from '../components/Slot';
-import { getRandomInt } from '../utils';
+import Slot from '~components/Slot';
+import { getRandomInt } from '~utils';
 
 interface SlotsContainerProps {
   amount: number;

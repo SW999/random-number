@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import Input from './Input';
+import Input from '~components/Input';
 
 const mockedProps = {
   min: 1,

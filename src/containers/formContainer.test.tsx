@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import FormContainer from './FormContainer';
+import FormContainer from '~containers/FormContainer';
 
 const mockedProps = {
   onClear: jest.fn(),

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
-import FormContainer from './FormContainer';
-import Header from '../components/Header';
-import SlotsContainer from './SlotsContainer';
+import FormContainer from '~containers/FormContainer';
+import Header from '~components/Header';
+import SlotsContainer from '~containers/SlotsContainer';
 
 type LimitsObj = {
   min: string | number;
