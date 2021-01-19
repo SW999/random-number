@@ -2,14 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Footer from '~components/Footer';
 
-jest.mock(
-  '../../package.json',
-  () => ({
-    version: '1.0.0',
-  }),
-  { virtual: true }
-);
-
 describe('Footer component', () => {
   beforeAll(() => {
     let portalRoot = document.getElementById('footer');
