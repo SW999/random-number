@@ -1,5 +1,7 @@
 # Random number
 
+Unfortunately, this repository is a good example of how **NOT** to use state in a React project.
+
 [Demo](https://sw999.github.io/random-number)
 
 An experiment: generate a random positive integers in a given range.
