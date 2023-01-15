@@ -109,7 +109,7 @@
     "jest-extended": "^0.11.5",
     "link-module-alias": "^1.2.0",
     "markdown-to-jsx": "^6.11.4",
-    "node-sass": "^7.0.0",
+    "node-sass": "^7.0.3",
     "parcel-bundler": "1.12.4",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1",
